@@ -1,7 +1,7 @@
 ---
 name: To Do 리스트 템플릿
 about: 프로젝트 진행에 필요한 To Do 리스트 템플릿입니다.
-title: To Do 리스트
+title: "[\U0001F4D1 To Do list] 이름 / 2021-00-00"
 labels: ''
 assignees: ''
 
