@@ -1,7 +1,7 @@
 ---
 name: Issue Task Card
 about: Issue Task Card
-title: ''
+title: "[\U0001F4A1 Issue Task Card] 이름 / 2021-00-00"
 labels: ''
 assignees: ''
 
