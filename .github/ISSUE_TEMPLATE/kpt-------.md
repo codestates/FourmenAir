@@ -1,7 +1,7 @@
 ---
 name: KPT 회고 템플릿
 about: Keep, Problem, Try 방식으로 기록하는 프로젝트 회고 템플릿입니다.
-title: "[\U0001F4A1KPT] 이름 / N주차 0요일"
+title: "[✔ KPT] 이름 / N주차 0요일"
 labels: ''
 assignees: ''
 
