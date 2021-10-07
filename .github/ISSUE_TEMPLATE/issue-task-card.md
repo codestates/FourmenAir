@@ -1,7 +1,7 @@
 ---
 name: Issue Task Card
 about: Issue Task Card
-title: "[\U0001F4A1 Task] 이름 / 2021-00-00"
+title: "[\U0001F4A1 Task] 추가 할 기능 / 이름"
 labels: ''
 assignees: ''
 
