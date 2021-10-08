@@ -4,13 +4,12 @@ about: Issue Task Card
 title: "[\U0001F4A1 Task] 구현하고자 하는 기능 / 이름 / 2021-00-00"
 labels: ''
 assignees: ''
-
 ---
 
 ### ISSUE
 
 - Group: client, server, sr
-- Type: bug, feature, delete
+- Type: feature
 - Detail: fix actions from client redux
 
 ### TODO
@@ -39,5 +38,5 @@ Pick one
 
 - Estimated time: E: 1h
 - Group : client, server
-- Sprint: Sprint__NUMBER__
+- Sprint: FourmenAir Project
 - Urgency: High, Middle, Low

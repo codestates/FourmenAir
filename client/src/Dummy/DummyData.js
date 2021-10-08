@@ -6,7 +6,7 @@ const DummyData = [
   },
   {
     id: 1,
-    url: 'https://postfiles.pstatic.net/MjAyMTA5MjBfMTE5/MDAxNjMyMTQxOTk4NDY5.sQ_AkSjFQPNd2NQjjyWLWIF_kABUwg-lt7EbVjJ6130g.tPCmwVOsGdnvohsWJJza9CwZaWb7SvOUAn2AsI-0Fwsg.JPEG.cbkb21/a2ltc3B8MzQ3MjM5.jpg?type=w966',
+    url: 'http://san.chosun.com/site/data/img_dir/2020/09/23/2020092302695_0.jpg',
     params: {
       postId: 'geonyeong',
     },
@@ -19,7 +19,7 @@ const DummyData = [
   },
   {
     id: 2,
-    url: 'https://postfiles.pstatic.net/MjAyMTA5MjBfMjg3/MDAxNjMyMTQyMDAzNDQ0.Y5icikQRbzU5_qVDFgdZBV7QZDjUZuMPWWCk-inJ_1Qg.EZrl0iPMnL6f4AVsI9luRJto_x0dTb5KXGJ1Bhk-0w0g.JPEG.cbkb21/%EA%B0%80%EC%9D%84_%EB%A7%90%ED%8B%B0%EC%9E%AC.jpg?type=w966',
+    url: 'https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202104/02/904b07a7-6490-4d54-ad26-3d19e2e75c03.jpg',
     params: {
       postId: 'geonyeong',
     },
