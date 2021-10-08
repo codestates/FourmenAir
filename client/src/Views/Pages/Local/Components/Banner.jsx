@@ -5,14 +5,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 // banner 공통
-
-const BannerContainer = styled.div`
-  position: relative;
-  width: 1280px;
-  margin: 0 auto;
-  background-color: #f7f7f7;
-`;
-
 const BannerImg = styled.div`
   width: 100%;
   height: 600px;
@@ -20,7 +12,6 @@ const BannerImg = styled.div`
 `;
 
 // 슬라이드 CSS
-
 const SlideTitle = styled.h2`
   padding: 60px 0px 50px 0px;
   text-align: center;
@@ -51,7 +42,6 @@ const StyledSlider = styled(Slider)`
     button::before {
       color: #e9e9e9;
     }
-  }
 `;
 
 const Banner = () => {
@@ -68,7 +58,7 @@ const Banner = () => {
   };
     return (
         <section id="banner">
-        <BannerContainer>
+        <div className="container">
           <BannerImg>
           <div>
           <SlideTitle>인기 서비스</SlideTitle>
@@ -94,7 +84,7 @@ const Banner = () => {
         </StyledSlider>
       </div>
           </BannerImg>
-        </BannerContainer>
+        </div>
       </section>
     )
 }

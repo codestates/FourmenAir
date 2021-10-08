@@ -122,7 +122,7 @@ const PostTopWrapper = styled.div`
   }
 `;
 
-export const PostTop = () => {
+ const PostTop = () => {
   return (
       <PostTopWrapper>
         <div className="post__container__top__profile">
@@ -139,3 +139,6 @@ export const PostTop = () => {
       </PostTopWrapper>
   );
 }
+
+
+export default PostTop

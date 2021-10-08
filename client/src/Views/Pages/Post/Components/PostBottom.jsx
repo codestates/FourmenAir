@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { PostComments } from './postcomments';
+import PostComments from './PostComments';
 
 const BORDER_DEV = ``;
 
@@ -84,7 +84,7 @@ const PostBottomWrapper = styled.div`
   }
 `;
 
-export const PostBottom = () => {
+ const PostBottom = () => {
   /* state 선언부 */
   const [commentData, setCommentData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -117,3 +117,5 @@ export const PostBottom = () => {
     </PostBottomWrapper>
   )
 };
+
+export default PostBottom

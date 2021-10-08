@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faGithub, faFacebook, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons";
 
 // footer 공통
-
 const FooterContainer = styled.div`
   position: relative;
   width: 1280px;
@@ -13,7 +12,6 @@ const FooterContainer = styled.div`
 `;
 
 //footer sns
-
 const FooterSNS = styled.div`
   position: absolute;
   right: 17px;
@@ -44,13 +42,12 @@ const FooterEm = styled.em`
 `;
 
 // footer info
-
 const FooterInfo = styled.div`
   padding: 25px 0;
   width: 80%;
-`;
-const FooterDiv = styled.div`
-position: relative;
+  > div {
+    position: relative;
+  }
 `;
 const FooterP = styled.p`
   display: inline-block;
@@ -71,7 +68,6 @@ const FooterInfoLi = styled.li`
   position: relative;
   white-space: nowrap;
   color: #222;
-  
   &::after {
   content: '';
   position: absolute;
@@ -115,7 +111,7 @@ const Footer = () => {
             <div id="footer_info">
                 <FooterContainer>
                     <FooterInfo>
-                        <FooterDiv>
+                        <div>
                             <FooterP>회사명: Fourmen</FooterP>
                             <FooterP>서비스명: Fourmen Air</FooterP>
                             <FooterInfoUl>
@@ -134,7 +130,7 @@ const Footer = () => {
                                 <FooterInfoLi>이정훈 <FooterInfoLiA>GITHUB</FooterInfoLiA></FooterInfoLi>
                             </FooterInfoUl>
                             <FooterInfoP>&copy; 2021 by FourmenAir Inc. All right reserved</FooterInfoP>
-                        </FooterDiv>
+                        </div>
                     </FooterInfo>
                 </FooterContainer>
             </div>
