@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Pagination } from './postpagination';
+import Pagination from './PostPagination';
 
 const BORDER_DEV = ``;
 
@@ -79,7 +79,7 @@ const PostCommentWrapper = styled.div`
     }
 `;
 
-export const PostComments= ({isLoading, commentData}) => {
+const PostComments = ({isLoading, commentData}) => {
     const MAX_COMMENT_IN_PAGE = 5;
 
     /* state 선언부 */
@@ -112,3 +112,5 @@ export const PostComments= ({isLoading, commentData}) => {
       </>
     );
 };
+
+export default PostComments

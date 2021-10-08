@@ -28,7 +28,7 @@ const PaginationWrapper = styled.ul`
   }
 `;
 
-export const Pagination = ({totalComments, maxCommentsInPage, handleCurrentPage}) => {
+const Pagination = ({totalComments, maxCommentsInPage, handleCurrentPage}) => {
     const totalPages = [];
     for (let i = 1; i <= Math.ceil(totalComments / maxCommentsInPage); i++) {
         totalPages.push(i);
@@ -41,3 +41,5 @@ export const Pagination = ({totalComments, maxCommentsInPage, handleCurrentPage}
         </PaginationWrapper>
     );
 };
+
+export default Pagination

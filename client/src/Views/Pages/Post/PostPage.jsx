@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { PostTop } from './components/posttop';
-import { PostBottom } from './components/postbottom';
+import PostTop from './Components/PostTop';
+import PostBottom from './Components/PostBottom';
 
 const BORDER_DEV = ``;
 
@@ -12,7 +12,7 @@ const PostContainer = styled.div`
   border: ${BORDER_DEV};
 `;
 
-export const Post = () => {
+const Post = () => {
     return (
     <PostContainer className="post__container">
       <PostTop className="post__container__top">
@@ -22,3 +22,5 @@ export const Post = () => {
     </PostContainer>
     )
 };
+
+export  default Post

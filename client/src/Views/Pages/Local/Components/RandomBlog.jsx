@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 
+// Random 공통
 const RandomeContainer = styled.div`
 position: relative;
 width: 1280px;
@@ -13,25 +14,24 @@ const RandomBlogs = styled.div`
   height: 800px;
   padding: 20px 50px;
   box-sizing: border-box;
+  > ul {
+    border: 2px solid #12babb;
+  &:last-child{
+      padding-right: 0;
+  }
+  text-align: center;
+  }
 `;
 
 const RandomBlogsDiv = styled.div`
   padding: 15px;
-  > span{
+  > span {
     font-size: 20px;
     font-weight: bold;
   }
 `;
 
-const RandomBlogsUl = styled.ul`
-  border: 2px solid #12babb;
-  &:last-child{
-      padding-right: 0;
-  }
-  text-align: center;
-`;
-
-const RandomBlogsUlLiFront = styled.li`
+const RandomBlogsUlLi = styled.li`
   display: inline-block;
   border: 1px solid #fff;
   width: 29.3333%;
@@ -47,9 +47,8 @@ const RandomBlogsUlLiFront = styled.li`
   &:hover{
     transform: rotateY(360deg);
   }
-`;
 
-const RandomBlogsUlLiH4 = styled.h4`
+  > h4 {
   position: absolute;
   bottom: 50px;
   left: 15px;
@@ -58,18 +57,20 @@ const RandomBlogsUlLiH4 = styled.h4`
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
-`;
-const RandomBlogsUlLiP = styled.p`
+  }
+
+  > p {
   position: absolute;
   bottom: 20px;
   left: 15px;
   font-size: 14px;
   text-overflow: ellipsis;
   white-space: nowrap;
-`;
+  }
 
-const RandomBlogsUlLiImg = styled.img`
-  background-size: cover;
+  > img {
+    background-size: cover;
+  }
 `;
 
 const RandomBlog = () => {
@@ -80,38 +81,38 @@ const RandomBlog = () => {
                   <RandomBlogsDiv>
                     <span>엇!? 여긴?! ( ⁎ ᵕᴗᵕ ⁎ )</span>
                   </RandomBlogsDiv>
-                    <RandomBlogsUl>
-                        <RandomBlogsUlLiFront>
-                            <RandomBlogsUlLiH4>이미지 제목이 들어갑니다</RandomBlogsUlLiH4>
-                            <RandomBlogsUlLiP>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</RandomBlogsUlLiP>
-                            <RandomBlogsUlLiImg src="" alt="" />
-                        </RandomBlogsUlLiFront>
-                        <RandomBlogsUlLiFront>
-                            <RandomBlogsUlLiH4>이미지 제목이 들어갑니다</RandomBlogsUlLiH4>
-                            <RandomBlogsUlLiP>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</RandomBlogsUlLiP>
-                            <RandomBlogsUlLiImg src="" alt="" />
-                        </RandomBlogsUlLiFront>
-                        <RandomBlogsUlLiFront>
-                            <RandomBlogsUlLiH4>이미지 제목이 들어갑니다</RandomBlogsUlLiH4>
-                            <RandomBlogsUlLiP>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</RandomBlogsUlLiP>
-                            <RandomBlogsUlLiImg src="" alt="" />
-                        </RandomBlogsUlLiFront>
-                        <RandomBlogsUlLiFront>
-                            <RandomBlogsUlLiH4>이미지 제목이 들어갑니다</RandomBlogsUlLiH4>
-                            <RandomBlogsUlLiP>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</RandomBlogsUlLiP>
-                            <RandomBlogsUlLiImg src="" alt="" />
-                        </RandomBlogsUlLiFront>
-                        <RandomBlogsUlLiFront>
-                            <RandomBlogsUlLiH4>이미지 제목이 들어갑니다</RandomBlogsUlLiH4>
-                            <RandomBlogsUlLiP>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</RandomBlogsUlLiP>
-                            <RandomBlogsUlLiImg src="" alt="" />
-                        </RandomBlogsUlLiFront>
-                        <RandomBlogsUlLiFront>
-                            <RandomBlogsUlLiH4>이미지 제목이 들어갑니다</RandomBlogsUlLiH4>
-                            <RandomBlogsUlLiP>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</RandomBlogsUlLiP>
-                            <RandomBlogsUlLiImg src="" alt="" />
-                        </RandomBlogsUlLiFront>
-                    </RandomBlogsUl>
+                    <ul>
+                        <RandomBlogsUlLi>
+                            <h4>이미지 제목이 들어갑니다</h4>
+                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
+                            <img src="" alt="" />
+                        </RandomBlogsUlLi>
+                        <RandomBlogsUlLi>
+                            <h4>이미지 제목이 들어갑니다</h4>
+                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
+                            <img src="" alt="" />
+                        </RandomBlogsUlLi>
+                        <RandomBlogsUlLi>
+                            <h4>이미지 제목이 들어갑니다</h4>
+                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
+                            <img src="" alt="" />
+                        </RandomBlogsUlLi>
+                        <RandomBlogsUlLi>
+                            <h4>이미지 제목이 들어갑니다</h4>
+                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
+                            <img src="" alt="" />
+                        </RandomBlogsUlLi>
+                        <RandomBlogsUlLi>
+                            <h4>이미지 제목이 들어갑니다</h4>
+                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
+                            <img src="" alt="" />
+                        </RandomBlogsUlLi>
+                        <RandomBlogsUlLi>
+                            <h4>이미지 제목이 들어갑니다</h4>
+                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
+                            <img src="" alt="" />
+                        </RandomBlogsUlLi>
+                    </ul>
                 </RandomBlogs>
             </RandomeContainer>
         </section>
