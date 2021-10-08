@@ -122,7 +122,7 @@ const LocalTitle = () => {
                         <LocalImgUlLi>
                             <LocalImgUlLiH4>이미지 제목이 들어갑니다.</LocalImgUlLiH4>
                             <LocalImgUlLiP>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</LocalImgUlLiP>
-                            <iLocalImgUlLiImg src="" alt="" />
+                            <LocalImgUlLiImg src="" alt="" />
                         </LocalImgUlLi>
                         <LocalImgUlLi>
                             <LocalImgUlLiH4>이미지 제목이 들어갑니다.</LocalImgUlLiH4>

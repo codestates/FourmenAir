@@ -5,10 +5,10 @@ import Footer from './Components/Footer'
 import RandomBlog from './Components/RandomBlog'
 
 
-const LocalPage = () => {
+const LocalPage = ({image}) => {
     return (
     <React.Fragment>
-      <Banner />
+      <Banner image={image} />
       <LocalTitle />
       <RandomBlog />
       <Footer />
