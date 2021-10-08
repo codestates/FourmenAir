@@ -97,7 +97,7 @@ const DummyData = [
   },
   {
     id: 8,
-    url: 'https://thumbnews.nateimg.co.kr/view610///news.nateimg.co.kr/orgImg/jo/2020/10/13/78e17583-df08-4507-bb35-7c185ca6df59.jpg',
+    url: 'http://san.chosun.com/site/data/img_dir/2020/09/23/2020092302695_1.jpg',
     params: {
       postId: 'jeonghoon',
     },
@@ -110,7 +110,7 @@ const DummyData = [
   },
   {
     id: 9,
-    url: 'https://thumbnews.nateimg.co.kr/view610///news.nateimg.co.kr/orgImg/jo/2020/10/13/4e45009d-98f5-4245-ac28-30161fa5064a.jpg',
+    url: 'http://www.cooknchefnews.com/news/data/20210908/p1065618828764627_554_thum.jpg',
     params: {
       postId: 'jeonghoon',
     },

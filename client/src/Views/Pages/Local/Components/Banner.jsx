@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 // banner 공통
+
 const BannerImg = styled.div`
   width: 100%;
   height: 600px;
@@ -12,6 +13,7 @@ const BannerImg = styled.div`
 `;
 
 // 슬라이드 CSS
+
 const SlideTitle = styled.h2`
   padding: 60px 0px 50px 0px;
   text-align: center;
@@ -29,22 +31,25 @@ const StyledSlider = styled(Slider)`
     display: block;
     background-color: #1b7abb;
     width: 80%;
-    height: 300px;
   }
   .slick-dots {
     bottom: -50px;
     margin-top: 200px;
     .slick-active {
       button::before {
-        color: #fff;
+        color: #c1c1c1;
       }
     }
     button::before {
       color: #e9e9e9;
     }
+  }
+`;
+const Image = styled.img`
+ background-size: cover;
 `;
 
-const Banner = () => {
+const Banner = ({image}) => {
   const settings = {
     dots: true,  // 슬라이드 밑에 점 보이게
     infinite: true,  // 무한으로 반복
@@ -63,24 +68,9 @@ const Banner = () => {
           <div>
           <SlideTitle>인기 서비스</SlideTitle>
         <StyledSlider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
+            {image.map((el, i) => {
+              return<div> <Image key={i} src={el.url} alt="차박" /></div>
+            })}
         </StyledSlider>
       </div>
           </BannerImg>
