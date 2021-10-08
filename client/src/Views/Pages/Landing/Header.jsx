@@ -1,7 +1,7 @@
 import React from 'react';
-import MyPageModal from '../modals/MyPageModal';
-import SignInModal from '../modals/SignInModal';
-import SignUpModal from '../modals/SignUpModal';
+import MyPageModal from '../Views/Modals/Mypage/MyPageModal';
+import SignInModal from '../../Modals/Signin/SignIn';
+import SignUpModal from '../../Modals/Signup/SignUp';
  
 
 const Header = (props) => {
