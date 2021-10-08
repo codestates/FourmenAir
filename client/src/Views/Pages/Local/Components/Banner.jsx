@@ -45,7 +45,7 @@ const StyledSlider = styled(Slider)`
     margin-top: 200px;
     .slick-active {
       button::before {
-        color: #c1c1c1;
+        color: #fff;
       }
     }
     button::before {
@@ -61,7 +61,6 @@ const Banner = () => {
     speed: 500,
     autoplay: true,
     autoplaySpeed: 2000,  // 넘어가는 속도
-    arrows: true,
     slidesToShow: 4,  // 4장씩 보이게
     slidesToScroll: 1,  // 1장씩 뒤로 넘어가게
     centerMode: true,

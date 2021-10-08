@@ -14,7 +14,14 @@ const LocalTitleContainer = styled.div`
 
 const Local = styled.div`
   padding: 20px 50px;
-  text-align: center;
+`;
+
+const LocalDiv = styled.div`
+  padding: 15px;
+  > span {
+    font-size: 19px;
+    font-weight: bold;
+  }
 `;
 
 const LocalUl = styled.ul`
@@ -22,6 +29,7 @@ const LocalUl = styled.ul`
   &:last-child{
       padding-right: 0;
   }
+  text-align: center;
 `;
 
 const LocalUlLi = styled.li`
@@ -96,6 +104,9 @@ const LocalTitle = () => {
         <section id="lacal-title">
             <LocalTitleContainer>
                 <Local>
+                  <LocalDiv>
+                    <span>서울</span>
+                  </LocalDiv>
                     <LocalUl>
                         <LocalUlLi><a href="#">서울</a></LocalUlLi>
                         <LocalUlLi><a href="#">경기</a></LocalUlLi>
@@ -106,12 +117,12 @@ const LocalTitle = () => {
                         <LocalUlLi><a href="#">제주</a></LocalUlLi>
                     </LocalUl>
                 </Local>
-                <LocalImg className="local-img">
+                <LocalImg>
                     <LocalImgUl>
                         <LocalImgUlLi>
                             <LocalImgUlLiH4>이미지 제목이 들어갑니다.</LocalImgUlLiH4>
                             <LocalImgUlLiP>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</LocalImgUlLiP>
-                            <iLocalImgUlLiImgmg src="" alt="" />
+                            <iLocalImgUlLiImg src="" alt="" />
                         </LocalImgUlLi>
                         <LocalImgUlLi>
                             <LocalImgUlLiH4>이미지 제목이 들어갑니다.</LocalImgUlLiH4>
