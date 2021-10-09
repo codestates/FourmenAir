@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 // localtitle 공통
-
 const LocalTitleContainer = styled.div`
   position: relative;
   width: 1280px;
@@ -11,45 +10,39 @@ const LocalTitleContainer = styled.div`
 `;
 
 // local
-
 const Local = styled.div`
   padding: 20px 50px;
 `;
-
 const LocalDiv = styled.div`
-  padding: 15px;
+  padding: 15px 0 7px 10px;
+  border-bottom: 2px solid #eee;
   > span {
     font-size: 19px;
     font-weight: bold;
   }
 `;
-
-const LocalUl = styled.ul`
-  border: 2px solid #12babb;
-  &:last-child{
-      padding-right: 0;
-  }
-  text-align: center;
-`;
-
-const LocalUlLi = styled.li`
+const LocalDivButton = styled.button`
   display: inline-block;
-  padding: 20px 20px;
-  margin-right: 80px;
-  font-size: 20px;
+  padding: 10px 20px;
+  margin-right: 7%;
+  font-size: 15px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  background-color: transparent;
   &:last-child{
       margin-right: 0;
   }
-  &:hover a{
+  &:hover {
       color: #fff;
+      background-color: #1a1a1a;
   }
 `;
-
 const LocalImg = styled.div`
   padding: 20px 50px;
   height: 300px;
 `;
-
 const LocalImgUl = styled.ul`
   border: 2px solid #12babb;
   &:last-child{
@@ -57,7 +50,6 @@ const LocalImgUl = styled.ul`
   }
   box-sizing: border-box;
 `;
-
 const LocalImgUlLi = styled.li`
   display: inline-block;
   border: 1px solid #fff;
@@ -75,7 +67,6 @@ const LocalImgUlLi = styled.li`
   transform: translateX(0px);
   }
 `;
-
 const LocalImgUlLiH4 = styled.h4`
   position: absolute;
   bottom: 50px;
@@ -94,46 +85,74 @@ const LocalImgUlLiP = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
-
 const LocalImgUlLiImg = styled.img`
   background-size: cover;
 `;
 
-const LocalTitle = () => {
+const LocalTitle = ({dummy}) => {
+  const [selectLocal, setSelectLocal] = useState('서울')
+  const [selectBlog, setSelectBlog] = useState([])
+  
+  const setBlog = dummy.filter((el) => el.data.local === "서울")
+
+  // local 빼오는 작업
+  const filteredLocal = dummy.map((el) => el.data.local)
+  const localAll = filteredLocal.filter((ele, i) => {
+    return filteredLocal.indexOf(ele) === i
+  })
+
+  const handleClick = (e) => {
+    // span에 있는 local 변경 작업
+    setSelectLocal(e)
+
+    // blog 빼오는 작업
+    const filteredBlog = dummy.filter((el) => el.data.local === e)
+    setSelectBlog(filteredBlog)
+  }
     return (
         <section id="lacal-title">
             <LocalTitleContainer>
                 <Local>
                   <LocalDiv>
-                    <span>서울</span>
+                    <span>{selectLocal}</span>
                   </LocalDiv>
-                    <LocalUl>
-                        <LocalUlLi><a href="#">서울</a></LocalUlLi>
-                        <LocalUlLi><a href="#">경기</a></LocalUlLi>
-                        <LocalUlLi><a href="#">강원</a></LocalUlLi>
-                        <LocalUlLi><a href="#">충청</a></LocalUlLi>
-                        <LocalUlLi><a href="#">전라</a></LocalUlLi>
-                        <LocalUlLi><a href="#">경상</a></LocalUlLi>
-                        <LocalUlLi><a href="#">제주</a></LocalUlLi>
-                    </LocalUl>
+                    <div style={{textAlign: "center", paddingTop: "15px"}}>
+                      {localAll.map((el, i) => {
+                        return <LocalDivButton key={i} onClick={() => handleClick(el)}>{el}</LocalDivButton>
+                      })}
+                    </div>
                 </Local>
                 <LocalImg>
                     <LocalImgUl>
-                        <LocalImgUlLi>
-                            <LocalImgUlLiH4>이미지 제목이 들어갑니다.</LocalImgUlLiH4>
-                            <LocalImgUlLiP>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</LocalImgUlLiP>
-                            <LocalImgUlLiImg src="" alt="" />
-                        </LocalImgUlLi>
-                        <LocalImgUlLi>
-                            <LocalImgUlLiH4>이미지 제목이 들어갑니다.</LocalImgUlLiH4>
-                            <LocalImgUlLiP>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</LocalImgUlLiP>
-                            <LocalImgUlLiImg src="" alt="" />
-                        </LocalImgUlLi>
-                        <LocalImgUlLi>
-                            <LocalImgUlLiH4>이미지 제목이 들어갑니다.</LocalImgUlLiH4>
-                            <LocalImgUlLiP>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</LocalImgUlLiP>
-                            <LocalImgUlLiImg src="" alt="" />
-                        </LocalImgUlLi>
+                          {selectBlog.length === 0 ? 
+                          (
+                            setBlog.map((el, i) => {
+                              return ( 
+                              <>
+                                <LocalImgUlLi>
+                                  <LocalImgUlLiImg key={i} src={el.url} alt="" />
+                                  <LocalImgUlLiH4  key={i} >{el.title}</LocalImgUlLiH4>
+                                  <LocalImgUlLiP  key={i} >{el.postcontents}</LocalImgUlLiP>
+                                </LocalImgUlLi>
+                            </>
+                              )
+                          })
+                          )
+                           : 
+                          (
+                            selectBlog.map((el, i) => {
+                              return ( 
+                              <>
+                                <LocalImgUlLi>
+                                  <LocalImgUlLiImg key={i} src={el.url} alt="" />
+                                  <LocalImgUlLiH4  key={i} >{el.title}</LocalImgUlLiH4>
+                                  <LocalImgUlLiP  key={i} >{el.postcontents}</LocalImgUlLiP>
+                                </LocalImgUlLi>
+                              </>
+                            )
+                          })
+                          )
+                          }
                     </LocalImgUl>
                 </LocalImg>
             </LocalTitleContainer>

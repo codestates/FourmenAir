@@ -5,20 +5,20 @@ import DummyData from './Dummy/DummyData'
 
 
 function App() {
-const [image, setImage] = useState([])
+const [dummy, setDummy] = useState([])
 
 useEffect(() => {
-  handleImage()
+  handleDummy()
 }, [])
 
-const handleImage = () => {
+const handleDummy = () => {
   const filter = DummyData.filter((el) => el.url)
-  setImage(filter)
+  setDummy(filter)
 }
 
   return (
     <React.Fragment>
-      <LocalPage image={image}></LocalPage>
+      <LocalPage dummy={dummy}></LocalPage>
       <PostPage></PostPage>
     </React.Fragment>
   );

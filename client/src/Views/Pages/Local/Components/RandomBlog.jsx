@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from "styled-components"
 
 // Random 공통
@@ -73,45 +73,60 @@ const RandomBlogsUlLi = styled.li`
   }
 `;
 
-const RandomBlog = () => {
+const RandomBlog = ({dummy}) => {
+const [randomDummy, setRandomDummy] = useState([])
+
+  const handleRandomClick = () => {
+    const randomList = []
+    for(let i = 0; i < 6; i++){
+      let random = Math.floor(Math.random() * dummy.length)
+      randomList.push(dummy[random])
+    }
+    let reRandom = randomList.filter((el, i) => randomList.indexOf(el) === i)
+    while(reRandom.length === 6){
+      if(reRandom.length === 6){
+        return setRandomDummy(reRandom)
+      }else{
+        let reList = Math.floor(Math.random() * dummy.length)
+        reRandom.push(dummy[reList])
+      }
+    }
+  }
+
     return (
         <section id="random">
             <RandomeContainer>
                 <RandomBlogs>
                   <RandomBlogsDiv>
-                    <span>엇!? 여긴?! ( ⁎ ᵕᴗᵕ ⁎ )</span>
+                    <span onClick={handleRandomClick}>여긴어때?! ( ⁎ ᵕᴗᵕ ⁎ )</span>
                   </RandomBlogsDiv>
                     <ul>
-                        <RandomBlogsUlLi>
-                            <h4>이미지 제목이 들어갑니다</h4>
-                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
-                            <img src="" alt="" />
-                        </RandomBlogsUlLi>
-                        <RandomBlogsUlLi>
-                            <h4>이미지 제목이 들어갑니다</h4>
-                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
-                            <img src="" alt="" />
-                        </RandomBlogsUlLi>
-                        <RandomBlogsUlLi>
-                            <h4>이미지 제목이 들어갑니다</h4>
-                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
-                            <img src="" alt="" />
-                        </RandomBlogsUlLi>
-                        <RandomBlogsUlLi>
-                            <h4>이미지 제목이 들어갑니다</h4>
-                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
-                            <img src="" alt="" />
-                        </RandomBlogsUlLi>
-                        <RandomBlogsUlLi>
-                            <h4>이미지 제목이 들어갑니다</h4>
-                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
-                            <img src="" alt="" />
-                        </RandomBlogsUlLi>
-                        <RandomBlogsUlLi>
-                            <h4>이미지 제목이 들어갑니다</h4>
-                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
-                            <img src="" alt="" />
-                        </RandomBlogsUlLi>
+                      {randomDummy.length === 0 ? 
+                      (
+                        dummy.map((el, i) => {
+                          if(el.id < 7){
+                          return ( 
+                            <RandomBlogsUlLi key={i}>
+                              <h4>{el.title}</h4>
+                              <p>{el.postcontents}</p>
+                              <img src={el.url} alt="차박" />
+                            </RandomBlogsUlLi>
+                            )
+                          }
+                        })
+                      )
+                      :
+                      (randomDummy.map((el, i) => {
+                        return (
+                          <RandomBlogsUlLi key={i}>
+                              <h4>{el.title}</h4>
+                              <p>{el.postcontents}</p>
+                              <img src={el.url} alt="차박" />
+                          </RandomBlogsUlLi>
+                          )
+                        })
+                      )
+                      }
                     </ul>
                 </RandomBlogs>
             </RandomeContainer>
