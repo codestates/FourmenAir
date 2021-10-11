@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
 import styled from 'styled-components'
 
@@ -28,7 +28,7 @@ const LocalDivButton = styled.button`
   display: inline-block;
   margin-top: 5px;
   padding: 10px 45px;
-  margin-right: 4%;
+  margin-right: 2.5%;
   font-size: 15px;
   font-weight: bold;
   border: 1px solid #616161;
@@ -114,7 +114,7 @@ const LocalTitle = ({dummy}) => {
   const [selectBlog, setSelectBlog] = useState([])
   
   const setBlog = dummy.filter((el) => el.data.local === "서울")
-
+  
   // local 빼오는 작업
   const filteredLocal = dummy.map((el) => el.data.local)
   const localAll = filteredLocal.filter((ele, i) => {

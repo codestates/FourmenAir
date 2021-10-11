@@ -2,7 +2,7 @@ const DummyData = [
   {
     id: 0,
     mainurl:
-      'https://cdn.discordapp.com/attachments/894796696494682135/895918395147571250/7b239f2d-1ba1-406d-b87f-41c415c4d3c5_2.jpg',
+      'https://cdn.discordapp.com/attachments/894796696494682135/897018051671785512/android-chrome-192x192.png',
   },
   {
     id: 1,
@@ -132,6 +132,49 @@ const DummyData = [
   },
   {
     id: 10,
+    url: 'https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/1muT/image/96aBwYkqpED0u89MlVOhK3Tpl68.jpg',
+    params: {
+      postId: 'yonghui',
+    },
+    data: {
+      local: '대전',
+      season: 'winter',
+    },
+    title: '미리 떠난 겨울 차박',
+    postcontents:
+      '적당히 서늘하고 적당히 따뜻한, 지금 계절이 캠핑하기 딱 좋은 것 같아요.',
+  },
+  {
+    id: 11,
+    url: 'https://cdn.imweb.me/upload/S20200813ebaefced8f210/eefbde36de890.jpg',
+    params: {
+      postId: 'yonghui',
+    },
+    data: {
+      local: '대전',
+      season: 'winter',
+    },
+    title:
+      'Merry Christmas~!! 특별한 크리스마스를 위한 우리만의 차박파티: 랜핑',
+    postcontents:
+      '창 밖을 보라 창 밖을 보라 흰 눈이 내린다~!! 창 밖을 보라 창 밖을 보라 찬 겨울이 왔다~!!',
+  },
+  {
+    id: 12,
+    url: 'https://images.chosun.com/resizer/IYPm_OxawTfJjuRoKooPnXi5Ocs=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/DMDC57VF6BLCR3YWOSO5NL5QRU.jpg',
+    params: {
+      postId: 'yonghui',
+    },
+    data: {
+      local: '대전',
+      season: 'winter',
+    },
+    title: '겨울철 맞은 "캠린이"를 위한 캠핑 꿀팁 A to Z',
+    postcontents:
+      '썰매를 타는 어린애들은 해 가는 줄도 모르고 눈길 위에다 썰매를 깔고 즐겁게 달린다',
+  },
+  {
+    id: 13,
     url: 'https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/1muT/image/OAH7Cce35bMqNAWgigJLiZvOWss.jpg',
     params: {
       postId: 'jeonghoon',
@@ -145,7 +188,7 @@ const DummyData = [
       '아~주 추운 겨울! 자연의 날씨는 도시보다 더 농도가 짙어서, 더 춥게 느껴지는 것 같아요~ 그래도 차에는 날 따뜻하게 해줄 히터와 침낭이 있으니! 한번 도전해볼래요?!',
   },
   {
-    id: 11,
+    id: 14,
     url: 'https://www.motorgraph.com/news/photo/202102/27167_86264_5525.jpg',
     params: {
       postId: 'beomsoo',
@@ -159,7 +202,7 @@ const DummyData = [
       '여행에도 매너가 있다. 캠핑은 자신이 머문 자리를 깨끗이 치우는 것으로 마무리된다. 자연을 누린 만큼, 원래 모습으로 되돌려놓는 건 당연하다.',
   },
   {
-    id: 12,
+    id: 15,
     url: 'https://contents.sixshop.com/thumbnails/uploadedFiles/16843/product/image_1609212872869_750.jpg',
     params: {
       postId: 'beomsoo',
@@ -173,8 +216,8 @@ const DummyData = [
       '겨울 차박은 뭐다? 장비빨이다!! 차박 초보를 위한 동계차박 감성 세트!! 나도 준비해서 완벽한 겨울 차박하자!!',
   },
   {
-    id: 13,
-    url: 'https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202104/02/904b07a7-6490-4d54-ad26-3d19e2e75c03.jpg',
+    id: 16,
+    url: 'https://www.korea.kr/newsWeb/resources/attaches/2020.06/11/07.jpg',
     params: {
       postId: 'beomsoo',
     },
@@ -187,7 +230,7 @@ const DummyData = [
       '단도직입적으로 말한다. 떠나라!!! 사람 없고 힐링할 수 있는 그 곳으로@!@',
   },
   {
-    id: 14,
+    id: 17,
     url: 'https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/56de/image/k1LDdC-l4xdJpTEokxNn8fCAeCc.jpg',
     params: {
       postId: 'beomsoo',
@@ -201,7 +244,7 @@ const DummyData = [
       '코로나19이후 타인과의 만남을 최소화할 수 있어 차박이 뜨고 있는 요즘! 차박 명소 찾고 계신가요? 그렇다면 여긴 어때요?!',
   },
   {
-    id: 15,
+    id: 18,
     url: 'https://www.jejutwn.com/data/photos/20210730/art_16275441018818_ed1419.jpg',
     params: {
       postId: 'beomsoo',
@@ -215,7 +258,7 @@ const DummyData = [
       '시원한 딥그린 컬러와 회색의 조화로 트렌디한 감성캠핑을 원하는 소비자들 마음을 사로잡은 그 텐트!! 나도 이런 감성적인 차박캠핑 가능?!!',
   },
   {
-    id: 16,
+    id: 19,
     url: 'http://san.chosun.com/site/data/img_dir/2020/09/23/2020092302695_0.jpg',
     params: {
       postId: 'yonghui',
@@ -229,7 +272,7 @@ const DummyData = [
       '복잡할 것이 없다. 차에서 자면 차박이다. 간단한 정의만큼 필요한 장비도 간단하다. 시트를 넘기고 매트리스를 깔거나, 도킹텐트를 치고 자면 된다. 차라는 공간의 안락하고 안전한 느낌은 흉흉한 코로나19 시대를 살아가는 현대인들에게 크나큰 위안이 된다.',
   },
   {
-    id: 17,
+    id: 20,
     url: 'http://san.chosun.com/site/data/img_dir/2020/09/23/2020092302695_1.jpg',
     params: {
       postId: 'yonghui',
@@ -243,7 +286,7 @@ const DummyData = [
       '유명한 차박지는 거의 안 갑니다. 카페나 블로그를 둘러보다가 가보고 싶은 곳이 생기면 기록해 뒀다가 가끔 인근을 지나갈 때 한 번 정찰하고, 나중에 최종적으로 가는 식입니다. 장소 선정에서 가장 중요하게 여기는 건 찾는 사람과 차량운행이 적으며 전망이 좋은 곳입니다.',
   },
   {
-    id: 18,
+    id: 21,
     url: 'http://san.chosun.com/site/data/img_dir/2020/09/23/2020092302695_8.jpg',
     params: {
       postId: 'yonghui',
@@ -257,8 +300,8 @@ const DummyData = [
       '여름 차박의 완성은 빗소리! 비오면 감성 UP 오히려 좋아! 툭툭 떨어지는 빗소리 들으며 생각과 마음 모두 정리하는 시간 어때요?',
   },
   {
-    id: 19,
-    url: 'http://www.cooknchefnews.com/news/data/20210908/p1065618828764627_554_thum.jpg',
+    id: 22,
+    url: 'https://static.hubzum.zumst.com/hubzum/2021/09/27/00/73544ef860a64aa38c4f95a8959e1b06.jpg',
     params: {
       postId: 'yonghui',
     },
@@ -271,7 +314,7 @@ const DummyData = [
       '조용한 것도 좋지만 럭셔리하게 느껴보는 건 어때? 3만 4천평의 넓은 정원과 숲속 산책로가 매력적인 도심 속에서 차박존(Zone)과 함께 뷔페 레스토랑에서 제공하는 조식, 셰프가 직접 구워 제공하는 숯불 바비큐 등 특급 호텔의 서비스를 즐길 수 있어 어디에서도 체험할 수 없는 럭셔리 캠핑 감성을 느낄 수 있다.',
   },
   {
-    id: 20,
+    id: 23,
     url: 'https://allways.smotor.com/wp-content/uploads/2020/11/KakaoTalk_20201103_172718213_02-2-1024x755.jpg',
     params: {
       postId: 'yonghui',
@@ -285,14 +328,14 @@ const DummyData = [
       '차박 캠핑 쉽게 설치하는 법! 트렁크 문을 열고 텐트를 씌워 준 뒤 좌우의 가장 위쪽 스트링 고리를 1열 시트 하단에 걸고 팽팽하게 조절해 줍니다. ㄷ모양의 아치폴대를 텐트 상단에 삽입 후 차량 좌우 하단 폴대 슬라이브에 폴대 끝부분을 넣어 고정하고 폴대를 후크에 체결합니다.',
   },
   {
-    id: 21,
+    id: 24,
     url: 'http://ojsfile.ohmynews.com/STD_IMG_FILE/2020/0717/IE002666740_STD.jpg',
     params: {
       postId: 'yonghui',
     },
     data: {
       local: '제주',
-      season: 'winter',
+      season: 'fall',
     },
     title: '호~호~ 불며 마시는 따뜻한 코코아 한잔하기 좋은 곳!',
     postcontents:
