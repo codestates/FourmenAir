@@ -1,26 +1,18 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
 import PostTop from './Components/PostTop';
 import PostBottom from './Components/PostBottom';
+import Footer from './Components/Footer';
 
-const BORDER_DEV = ``;
-
-const PostContainer = styled.div`
-  width: 1240px;
-  height: auto;
-  padding: 4px;
-  border: ${BORDER_DEV};
-`;
-
-const Post = () => {
-    return (
-    <PostContainer className="post__container">
-      <PostTop className="post__container__top">
-      </PostTop>
-      <PostBottom className="post__container__bottom">
-      </PostBottom>
-    </PostContainer>
-    )
+const Post = ({isLoggedIn, postData, accessToken, dummy}) => {
+  return (
+  <React.Fragment>
+    <PostTop className="post__container__top" postData={postData} dummy={dummy}>
+    </PostTop>
+    <PostBottom className="post__container__bottom" isLoggedIn={isLoggedIn} accessToken={accessToken}>
+    </PostBottom>
+    <Footer />
+  </React.Fragment>
+  )
 };
 
 export  default Post

@@ -8,7 +8,7 @@ export const ModalBackdrop = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.75);
   display: grid;
   place-items: center;
 `;
@@ -25,19 +25,12 @@ export const ModalBtn = styled.button`
   border: none;
   padding: 20px;
   color: #0a0a0a;
-  /* border-radius: 30px; */
   cursor: grab;
 `;
 
-export const ModalView = styled.div.attrs(props => ({
-  role: 'dialog'
-}))`
-
-
-    
-    //background-color: #b69797;
-    /* width: 500px;
-    height: 300px; */
+export const ModalView = styled.div`
+  position: relative;
+  text-align: center;
 
     > div.close_btn {
       margin-top: 5px;
@@ -57,11 +50,21 @@ export const ModalView = styled.div.attrs(props => ({
       border-radius: 10px;
     }
 
+    > div.box span {
+      position: absolute;
+      top: 3px;
+      right: 5px;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
     > div.box h1 {
       margin: 0 0 30px;
       padding: 0;
       color: #fff;
       text-align: center;
+      font-size: 30px;
     }
     
     > div.box .inputBox {
@@ -81,13 +84,19 @@ export const ModalView = styled.div.attrs(props => ({
       background: transparent;
     }
 
+    > div.box .inputBox input[type="checkbox"] {
+      width: 15px; 
+      height: 15px;
+      margin-left: -40px;
+    }
+
      > div.box .inputBox label {
       position: absolute;
       top: 0;
       left: 0;
       letter-spacing: 1px;
       padding: 10px 0;
-      font-size: 16px;
+      font-size: 18px;
       color: #fff;
       pointer-events: none;
       transition: 0.5s;
@@ -112,6 +121,14 @@ export const ModalView = styled.div.attrs(props => ({
       padding: 10px 20px;
       cursor: pointer;
       border-radius: 5px;
+      font-size: 16px;
+      margin-top: 15px;
+      margin-right: 20%;
+      margin-bottom: 20px;
+    }
+
+    > div.box input:last-child{
+      margin-right: 0;
     }
 
   > div.box a {   
@@ -131,9 +148,10 @@ export const ModalView = styled.div.attrs(props => ({
         <ModalBtn onClick={openModalHandler}>
           {isOpen === false ? 'My Page' : 'My Page'}
         </ModalBtn>
-        {isOpen === true ? <ModalBackdrop onClick={openModalHandler}>
-          <ModalView onClick={(e) => e.stopPropagation()}>
+        {isOpen === true ? <ModalBackdrop>
+          <ModalView>
           <div className='box'>
+          <span onClick={openModalHandler} className='close-btn'>&times;</span>
           <h1 align="center">My Page</h1>
           <form role="form" method="post">
       
@@ -176,9 +194,8 @@ export const ModalView = styled.div.attrs(props => ({
               <label>Phone Number</label>
             </div>  
             <input type="submit" name="login" value="OK" />
-            <input type="button" id="btn" value="cancel" />
+            <input type="button" id="btn" value="cancel" onClick={openModalHandler} />
           </form>      
-             
           </div>
           </ModalView>
         </ModalBackdrop> : null}

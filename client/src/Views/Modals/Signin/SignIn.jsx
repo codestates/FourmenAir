@@ -1,25 +1,20 @@
 import { useState } from 'react';
+import {Link} from "react-router-dom"
 import styled from 'styled-components';
 
-export const ModalBackdrop = styled.div`
+const ModalBackdrop = styled.div`
   position: fixed;
   z-index: 999;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.75);
   display: grid;
   place-items: center;
-`;
+  `;
 
-export const ModalContainer = styled.div`
-  height: 15rem;
-  text-align: center;
-  margin: 120px auto;
-`;
-
-export const ModalBtn = styled.button`
+const ModalBtn = styled.button`
   background-color: #eee5ec;
   text-decoration: none;
   border: none;
@@ -27,18 +22,12 @@ export const ModalBtn = styled.button`
   color: #0a0a0a;
   /* border-radius: 30px; */
   cursor: grab;
-`;
+  `;
 
-export const ModalView = styled.div.attrs(props => ({
-  role: 'dialog'
-}))`
-
-
+const ModalView = styled.div`
+    position: relative;
+    text-align: center;
     
-    //background-color: #b69797;
-    /* width: 500px;
-    height: 300px; */
-
     > div.close_btn {
       margin-top: 5px;
       cursor: pointer;
@@ -56,18 +45,26 @@ export const ModalView = styled.div.attrs(props => ({
       box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
       border-radius: 10px;
     }
-
+    > div.box span {
+      position: absolute;
+      top: 3px;
+      right: 5px;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
     > div.box h1 {
       margin: 0 0 30px;
       padding: 0;
       color: #fff;
       text-align: center;
+      font-size: 30px;
     }
     
     > div.box .inputBox {
       position: relative;
     }
-
+    
     > div.box .inputBox input {
       width: 100%;
       padding: 10px;
@@ -80,25 +77,25 @@ export const ModalView = styled.div.attrs(props => ({
       outline: none;
       background: transparent;
     }
-
-     > div.box .inputBox label {
+    
+    > div.box .inputBox label {
       position: absolute;
       top: 0;
       left: 0;
       letter-spacing: 1px;
       padding: 10px 0;
-      font-size: 16px;
+      font-size: 18px;
       color: #fff;
       pointer-events: none;
       transition: 0.5s;
     }
-
+    
     > div.box .inputBox input:valid ~ label {
-        top: -18px;
-        left: 0;
-        color: #03a9f4;
-        font-size: 12px;
-      }
+      top: -18px;
+      left: 0;
+      color: #03a9f4;
+      font-size: 12px;
+    }
     > div.box .register {
       color: #03a9f4;
     }
@@ -112,49 +109,62 @@ export const ModalView = styled.div.attrs(props => ({
       padding: 10px 20px;
       cursor: pointer;
       border-radius: 5px;
+      font-size: 16px;
+      margin-top: 15px;
+      margin-right: 20%;
+      margin-bottom: 20px;
     }
 
-  > div.box a {   
-    color: #fff;
-    margin-left: 2%;
-  }
+    > div.box input:last-child{
+      margin-right: 0;
+    }
 
+    > div.box a {   
+      color: #fff;
+      margin-left: 2%;
+    }
 `;
 
- const SignInModal = () => {
+const SignInModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openModalHandler = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <>
         <ModalBtn onClick={openModalHandler}>
           {isOpen === false ? 'sign in' : 'sign in'}
         </ModalBtn>
-        {isOpen === true ? <ModalBackdrop onClick={openModalHandler}>
-          <ModalView onClick={(e) => e.stopPropagation()}>
-          <div className='box'>
-            <h1 align="center">Sign In</h1>
-            <form role="form" method="post">      
-            <div class="inputBox">
-              <input type="text" name="user email" autocomplete="off" required />
-              <label>email</label>
-            </div>
-            <div class="inputBox">
-              <input type="password" name="password" autocomplete="off" required />
-              <label>Password</label>
-            </div>      
-            <input type="submit" name="login" value="Login" />
-            <input type="submit" name="회원가입" value="회원가입" />
-            </form>      
-             
-          </div>
-          </ModalView>
-        </ModalBackdrop> : null}
+        {isOpen === true ? 
+          (
+            <ModalBackdrop>
+              <ModalView>
+              <div className='box'>
+              <span onClick={openModalHandler} className='close-btn'>&times;</span>
+              <h1 align="center">Sign In</h1>
+              <form role="form" method="post">      
+                <div class="inputBox">
+                  <input type="text" name="user email" autocomplete="off" required />
+                  <label>email</label>
+                </div>
+                <div class="inputBox">
+                  <input type="password" name="password" autocomplete="off" required />
+                  <label>Password</label>
+                </div>      
+                <input type="submit" name="login" value="Login" />
+                <Link to="/signup"><input type="submit" name="회원가입" value="회원가입" /></Link>
+              </form>      
+              </div>
+            </ModalView>
+          </ModalBackdrop>
+        )
+        : 
+        null
+      }
     </>
   );
   };
- 
- export default SignInModal;
 
-//<span onClick={openModalHandler} className='close-btn'>&times;</span>
+  export default SignInModal;
+

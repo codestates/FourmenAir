@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import styled from 'styled-components'
 
 // localtitle 공통
@@ -6,45 +7,54 @@ const LocalTitleContainer = styled.div`
   position: relative;
   width: 1280px;
   margin: 0 auto;
-  background-color: #555;
 `;
 
 // local
 const Local = styled.div`
-  padding: 20px 50px;
+  width: 100%;
+  padding: 70px 50px 0 50px;
+  box-sizing: border-box;
 `;
 const LocalDiv = styled.div`
-  padding: 15px 0 7px 10px;
-  border-bottom: 2px solid #eee;
+  padding: 15px 0 15px 10px;
+  border-bottom: 2px solid #616161;
   > span {
-    font-size: 19px;
+    padding-left: 7px;
+    font-size: 25px;
     font-weight: bold;
   }
 `;
 const LocalDivButton = styled.button`
   display: inline-block;
-  padding: 10px 20px;
-  margin-right: 7%;
+  margin-top: 5px;
+  padding: 10px 45px;
+  margin-right: 4%;
   font-size: 15px;
   font-weight: bold;
-  border: 0;
+  border: 1px solid #616161;
   border-radius: 6px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1);
   background-color: transparent;
   &:last-child{
       margin-right: 0;
   }
   &:hover {
       color: #fff;
-      background-color: #1a1a1a;
+      background-color: #13294b;
+      box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
   }
 `;
+
+// local Image
 const LocalImg = styled.div`
-  padding: 20px 50px;
+  padding: 35px 50px 70px 50px;
   height: 300px;
 `;
 const LocalImgUl = styled.ul`
-  border: 2px solid #12babb;
+  background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
   &:last-child{
       padding-right: 0;
   }
@@ -54,24 +64,30 @@ const LocalImgUlLi = styled.li`
   display: inline-block;
   border: 1px solid #fff;
   width: 29.3333%;
-  height: 250px;
-  margin: 1%;
+  height: 230px;
+  margin: 2%;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  opacity: 0.4;
+  opacity: 0.5;
   transition: all 0.6s 0.2s ease;
   transform: translateX(50px);
+  &:first-child{
+    margin-left: -2%;
+  }
   &:hover{
     opacity: 1;
-  transform: translateX(0px);
+    transform: translateX(0px);
+    cursor: pointer;
   }
 `;
 const LocalImgUlLiH4 = styled.h4`
   position: absolute;
   bottom: 50px;
   left: 15px;
-  font-size: 18px;
+  font-size: 20px;
+  color: #eceff1;
+  text-shadow: 1px 1px #111;
   font-weight: bold;
   text-transform: uppercase;
   text-overflow: ellipsis;
@@ -81,12 +97,16 @@ const LocalImgUlLiP = styled.p`
   position: absolute;
   bottom: 20px;
   left: 15px;
-  font-size: 14px;
+  font-size: 16px;
+  color: #f5f5f5;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-shadow: 1px 1px #111;
 `;
 const LocalImgUlLiImg = styled.img`
   background-size: cover;
+  border: 0;
+  border-radius: 10px;
 `;
 
 const LocalTitle = ({dummy}) => {
@@ -109,8 +129,18 @@ const LocalTitle = ({dummy}) => {
     const filteredBlog = dummy.filter((el) => el.data.local === e)
     setSelectBlog(filteredBlog)
   }
+
+  const handleLocalTitlePost = (postId) => {
+    axios.get("http://fourmenair/user/post", {
+      withCredentials: true
+    }).then((res) => {
+      if(res.post.postId === postId){
+        return axios.get(`http://fourmenair/user/post/{postId}`)
+      }
+    })
+  }
     return (
-        <section id="lacal-title">
+        <section id="lacal-title" style={{backgroundColor: "#edeef2"}}>
             <LocalTitleContainer>
                 <Local>
                   <LocalDiv>
@@ -129,7 +159,7 @@ const LocalTitle = ({dummy}) => {
                             setBlog.map((el, i) => {
                               return ( 
                               <>
-                                <LocalImgUlLi>
+                                <LocalImgUlLi onClick={() => handleLocalTitlePost(i)}>
                                   <LocalImgUlLiImg key={i} src={el.url} alt="" />
                                   <LocalImgUlLiH4  key={i} >{el.title}</LocalImgUlLiH4>
                                   <LocalImgUlLiP  key={i} >{el.postcontents}</LocalImgUlLiP>
