@@ -8,7 +8,7 @@ export const ModalBackdrop = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.75);
   display: grid;
   place-items: center;
 `;
@@ -17,7 +17,7 @@ export const ModalContainer = styled.div`
   height: 15rem;
   text-align: center;
   margin: 120px auto;
-`;
+  `;
 
 export const ModalBtn = styled.button`
   background-color: #eee5ec;
@@ -25,43 +25,46 @@ export const ModalBtn = styled.button`
   border: none;
   padding: 20px;
   color: #0a0a0a;
-  /* border-radius: 30px; */
-  cursor: grab;
-`;
+  cursor: pointer;
+  `;
 
-export const ModalView = styled.div.attrs(props => ({
-  role: 'dialog'
-}))`
+export const ModalView = styled.div`
+position: relative;
+text-align: center;
 
+> div.close_btn {
+  margin-top: 5px;
+  cursor: pointer;
+}
 
-    
-    //background-color: #b69797;
-    /* width: 500px;
-    height: 300px; */
+> div.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  padding: 50px;
+  background: rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
 
-    > div.close_btn {
-      margin-top: 5px;
+> div.box span {
+      position: absolute;
+      top: 3px;
+      right: 5px;
+      color: #fff;
+      font-size: 20px;
       cursor: pointer;
     }
-
-    > div.box {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 400px;
-      padding: 50px;
-      background: rgba(0, 0, 0, 0.8);
-      box-sizing: border-box;
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
-    }
-
+    
     > div.box h1 {
       margin: 0 0 30px;
       padding: 0;
       color: #fff;
       text-align: center;
+      font-size: 30px;
     }
     
     > div.box .inputBox {
@@ -81,13 +84,19 @@ export const ModalView = styled.div.attrs(props => ({
       background: transparent;
     }
 
-     > div.box .inputBox label {
+    > div.box .inputBox input[type="checkbox"] {
+      width: 15px; 
+      height: 15px;
+      margin-left: -90px;
+    }
+
+    > div.box .inputBox label {
       position: absolute;
       top: 0;
       left: 0;
       letter-spacing: 1px;
       padding: 10px 0;
-      font-size: 16px;
+      font-size: 18px;
       color: #fff;
       pointer-events: none;
       transition: 0.5s;
@@ -112,12 +121,19 @@ export const ModalView = styled.div.attrs(props => ({
       padding: 10px 20px;
       cursor: pointer;
       border-radius: 5px;
+      font-size: 16px;
+      margin-top: 15px;
+      margin-bottom: 20px;
     }
 
-  > div.box a {   
-    color: #fff;
-    margin-left: 2%;
-  }
+    > div.box input:last-child{
+      margin-right: 0;
+    }
+
+    > div.box a {   
+      color: #fff;
+      margin-left: 2%;
+    }
 
 `;
 
@@ -131,9 +147,10 @@ export const ModalView = styled.div.attrs(props => ({
         <ModalBtn onClick={openModalHandler}>
           {isOpen === false ? 'sign up' : 'sign up'}
         </ModalBtn>
-        {isOpen === true ? <ModalBackdrop onClick={openModalHandler}>
-          <ModalView onClick={(e) => e.stopPropagation()}>
+        {isOpen === true ? <ModalBackdrop>
+          <ModalView>
           <div className='box'>
+          <span onClick={openModalHandler} className='close-btn'>&times;</span>
           <h1 align="center">Sign Up</h1>
           <form role="form" method="post">
       
@@ -166,8 +183,7 @@ export const ModalView = styled.div.attrs(props => ({
               <label for="scales">female</label>
             </div>
             <input type="submit" name="회원가입" value="OK" />       
-          </form>      
-             
+          </form>
           </div>
           </ModalView>
         </ModalBackdrop> : null}

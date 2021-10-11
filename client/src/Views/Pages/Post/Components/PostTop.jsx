@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const MAIN_IMAGE_URL = `https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-9/182987501_5999510240062998_2076716690229217986_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=a26aad&_nc_ohc=UufOJKTeE_UAX9guidr&_nc_ht=scontent-ssn1-1.xx&oh=c68c1961374c243637aba7ed6ea6511f&oe=6185B8A8`;
-const MAIN_CONTENT_TEXT = `한국의 지베르니라고 불리는 낙강물길공원은 안동 비밀의 숲이라고도 불린다. 호수를 바라보며 즐기는 혼크닉은 어느 카페 부럽지 않다. 곳곳에 숨어있는 포토존에서 사진을 찍으면 마치 모네가 된 듯한 환상을 가져다준다. 숲속 쉼터를 지나 조금만 더 오르면 안동루로 오르는 계단을 만날 수 있고, 그곳에서는 안동댐을 한눈에 내려다볼 수 있다.`;
 const BORDER_DEV = ``;
+
+const PostTopContainer = styled.div`
+  width: 1280px;
+  margin: 0 auto;
+`;
 
 const PostTopWrapper = styled.div`
   /* 박스 설정 */
@@ -17,10 +20,10 @@ const PostTopWrapper = styled.div`
     border: ${BORDER_DEV};
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     position: relative;
-    width: 1200px;
+    width: 100%;
     height: 100px;
     /* 배경 설정 */
-    background-color: #f0f1fa;
+    background-color: #edeef2;
 
     > .post__container__top__profile__image {
       /* 박스 설정 */
@@ -32,14 +35,14 @@ const PostTopWrapper = styled.div`
       width: 80px;
       height: 80px;
     }
-    > .post__container__top__profile__id {
+    > .post__container__top__profile__name {
       /* 박스 설정 */
       border: ${BORDER_DEV};
       display: inline-block;
       position: absolute;
       top: 10px;
       left: 120px;
-      width: 120px;
+      width: 160px;
       height: 20px;
       /* 폰트 설정 */
       color: rgba(0, 0, 0, 0.8);
@@ -54,7 +57,7 @@ const PostTopWrapper = styled.div`
       position: absolute;
       top: 40px;
       left: 120px;
-      width: 120px;
+      width: 160px;
       height: 20px;
     }
     > .post__container__top__profile__local {
@@ -64,7 +67,7 @@ const PostTopWrapper = styled.div`
       position: absolute;
       top: 70px;
       left: 120px;
-      width: 120px;
+      width: 160px;
       height: 20px;
       /* 폰트 설정 */
       color: rgba(0, 0, 0, 0.8);
@@ -79,7 +82,7 @@ const PostTopWrapper = styled.div`
       position: absolute;
       top: 10px;
       right: 30px;
-      width: 910px;
+      width: 860px;
       height: 80px;
       /* 폰트 설정 */
       font-weight: 800;
@@ -96,7 +99,7 @@ const PostTopWrapper = styled.div`
     /* 박스 설정 */
     border: ${BORDER_DEV};
     padding: 25px 0px 25px 0px;
-    width: 1200px;
+    width: 100%;
     min-height: 800px;
     height: auto;
 
@@ -122,23 +125,44 @@ const PostTopWrapper = styled.div`
   }
 `;
 
- const PostTop = () => {
+ const PostTop = ({postData, dummy}) => {
+  /* 나중에 사용할 코드 */
+  // const [postData, setPostData] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [commentValue, setCommentValue] = useState('');
+
+  // /* data fetch */
+  // const POST_DATA_URL = `https://jsonplaceholder.typicode.com/post/1`;
+  // useEffect(() => {
+  //     setIsLoading(true);
+  //     axios.get(POST_DATA_URL)
+  //     .then(res => {
+  //         console.log(`포스트 데이터를 받아 오는데 성공했습니다.`);
+  //         setPostData(res.data);
+  //         setIsLoading(false);
+  //     })
+  //     .catch(err => {
+  //         console.log(`포스트 데이터를 받아 오는데 실패했습니다.`);
+  //     });
+  // }, []);
+
   return (
-      <PostTopWrapper>
-        <div className="post__container__top__profile">
-          <img className="post__container__top__profile__image" src="test" alt="프로필 사진 100px * 100px"></img>
-          <span className="post__container__top__profile__id">관리자</span>
-          <span className="post__container__top__profile__time">2021-10-07 16:53</span>
-          <span className="post__container__top__profile__local">서울</span>
-          <span className="post__container__top__profile__title">동대문디자인플라자(DDP)</span>
-        </div>
-        <div className="post__container__top__main">
-          <img className="post__container__top__main__image" src={MAIN_IMAGE_URL} alt="메인 이미지" ></img>
-          <div className="post__container__top__main__content">{MAIN_CONTENT_TEXT}</div>
-        </div>
-      </PostTopWrapper>
+    <PostTopContainer>
+    <PostTopWrapper postData={postData}>
+      <div className="post__container__top__profile">
+        {/* <img className="post__container__top__profile__image" src={dummy[0].mainUrl} alt="프로필 사진 100px * 100px"></img> */}
+        <span className="post__container__top__profile__name"></span>
+        <span className="post__container__top__profile__time"></span>
+        <span className="post__container__top__profile__local"></span>
+        <span className="post__container__top__profile__title"></span>
+      </div>
+      <div className="post__container__top__main">
+        {/* <img className="post__container__top__main__image" src={postData.url} alt="메인 이미지" ></img> */}
+        <div className="post__container__top__main__content"></div>
+      </div>
+    </PostTopWrapper>
+    </PostTopContainer>
   );
 }
-
 
 export default PostTop

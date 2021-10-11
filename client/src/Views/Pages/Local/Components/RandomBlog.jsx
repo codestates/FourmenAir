@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState} from 'react'
+import axios from 'axios';
 import styled from "styled-components"
 
 // Random 공통
@@ -6,16 +7,16 @@ const RandomeContainer = styled.div`
 position: relative;
 width: 1280px;
 margin: 0 auto;
-background-color: #777;
 `;
 
 const RandomBlogs = styled.div`
   width: 100%;
-  height: 800px;
-  padding: 20px 50px;
+  padding: 70px 50px 70px 50px;
   box-sizing: border-box;
   > ul {
-    border: 2px solid #12babb;
+    background-color: #edeef2;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
   &:last-child{
       padding-right: 0;
   }
@@ -24,20 +25,24 @@ const RandomBlogs = styled.div`
 `;
 
 const RandomBlogsDiv = styled.div`
-  padding: 15px;
+  padding: 0 0 30px 0;
   > span {
-    font-size: 20px;
+    display: inline-block;
+    padding-left: 7px;
+    font-size: 25px;
     font-weight: bold;
+     cursor: pointer;
   }
 `;
 
 const RandomBlogsUlLi = styled.li`
   display: inline-block;
-  border: 1px solid #fff;
+  border: 0;
   width: 29.3333%;
-  height: 250px;
-  margin: 1%;
+  height: 230px;
+  margin: 2%;
   box-sizing: border-box;
+  box-shadow: 4px 7px 7px rgba(0,0,0,0.4);
   position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
@@ -46,72 +51,105 @@ const RandomBlogsUlLi = styled.li`
   backface-visibility: hidden;
   &:hover{
     transform: rotateY(360deg);
+    cursor: pointer;
   }
 
   > h4 {
   position: absolute;
   bottom: 50px;
   left: 15px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
-  text-transform: uppercase;
+  color: #eceff1;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-shadow: 1px 1px #111;
   }
 
   > p {
   position: absolute;
   bottom: 20px;
   left: 15px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #f5f5f5;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-shadow: 1px 1px #111;
   }
 
   > img {
     background-size: cover;
+    border: 0;
+    border-radius: 10px;
   }
 `;
 
-const RandomBlog = () => {
+const RandomBlog = ({dummy}) => {
+const [randomDummy, setRandomDummy] = useState([])
+
+  const handleRandomClick = () => {
+    const randomList = []
+    for(let i = 0; i < 6; i++){
+      let random = Math.floor(Math.random() * dummy.length)
+      randomList.push(dummy[random])
+    }
+    let reRandom = randomList.filter((el, i) => randomList.indexOf(el) === i)
+    while(reRandom.length === 6){
+      if(reRandom.length === 6){
+        return setRandomDummy(reRandom)
+      }else{
+        let reList = Math.floor(Math.random() * dummy.length)
+        reRandom.push(dummy[reList])
+      }
+    }
+  }
+
+  const handleRandomBlogPost = (postId) => {
+
+    axios.get("http://fourmenair/user/post", {
+      withCredentials: true
+    }).then((res) => {
+      if(res.post.postId === postId){
+        return axios.get(`http://fourmenair/user/post/{postId}`)
+      }
+    })
+  }
+
     return (
-        <section id="random">
+        <section id="random" style={{backgroundColor: "#fff"}}>
             <RandomeContainer>
                 <RandomBlogs>
                   <RandomBlogsDiv>
-                    <span>엇!? 여긴?! ( ⁎ ᵕᴗᵕ ⁎ )</span>
+                    <span onClick={handleRandomClick}>여긴어때?! ( ⁎ ᵕᴗᵕ ⁎ )</span>
                   </RandomBlogsDiv>
                     <ul>
-                        <RandomBlogsUlLi>
-                            <h4>이미지 제목이 들어갑니다</h4>
-                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
-                            <img src="" alt="" />
-                        </RandomBlogsUlLi>
-                        <RandomBlogsUlLi>
-                            <h4>이미지 제목이 들어갑니다</h4>
-                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
-                            <img src="" alt="" />
-                        </RandomBlogsUlLi>
-                        <RandomBlogsUlLi>
-                            <h4>이미지 제목이 들어갑니다</h4>
-                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
-                            <img src="" alt="" />
-                        </RandomBlogsUlLi>
-                        <RandomBlogsUlLi>
-                            <h4>이미지 제목이 들어갑니다</h4>
-                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
-                            <img src="" alt="" />
-                        </RandomBlogsUlLi>
-                        <RandomBlogsUlLi>
-                            <h4>이미지 제목이 들어갑니다</h4>
-                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
-                            <img src="" alt="" />
-                        </RandomBlogsUlLi>
-                        <RandomBlogsUlLi>
-                            <h4>이미지 제목이 들어갑니다</h4>
-                            <p>이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.이미지 내용이 들어갑니다.</p>
-                            <img src="" alt="" />
-                        </RandomBlogsUlLi>
+                      {randomDummy.length === 0 ? 
+                      (
+                        dummy.map((el, i) => {
+                          if(el.id < 7){
+                          return ( 
+                            <RandomBlogsUlLi key={i} onClick={() => handleRandomBlogPost(i)}>
+                              <h4>{el.title}</h4>
+                              <p>{el.postcontents}</p>
+                              <img src={el.url} alt="차박" />
+                            </RandomBlogsUlLi>
+                            )
+                          }
+                        })
+                      )
+                      :
+                      (randomDummy.map((el, i) => {
+                        return (
+                          <RandomBlogsUlLi key={i}>
+                              <h4>{el.title}</h4>
+                              <p>{el.postcontents}</p>
+                              <img src={el.url} alt="차박" />
+                          </RandomBlogsUlLi>
+                          )
+                        })
+                      )
+                      }
                     </ul>
                 </RandomBlogs>
             </RandomeContainer>

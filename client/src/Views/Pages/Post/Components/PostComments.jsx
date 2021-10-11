@@ -4,10 +4,15 @@ import Pagination from './PostPagination';
 
 const BORDER_DEV = ``;
 
+const PostCommentContainer = styled.div`
+  width: 1280px;
+  margin: 0 auto;
+`;
+
 const PostCommentWrapper = styled.div`
     /* 박스 설정 */
     border: ${BORDER_DEV};
-    width: 1200px;
+    width: 100%;
     min-height: 300px;
     max-height: 710px;
     /* Grid 설정 */
@@ -16,11 +21,11 @@ const PostCommentWrapper = styled.div`
     align-items: center;
     justify-content: center;
     /* 배경 설정 */
-    background-color: #f0f1fa;
+    background-color: #fff;
 
     > div {
       position: relative;
-      width: 1200px;
+      width: 1280px;
       height: 100px;
       border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 
@@ -40,7 +45,7 @@ const PostCommentWrapper = styled.div`
         position: absolute;
         top: 10px;
         left: 120px;
-        width: 1050px;
+        width: 1130px;
         height: 40px;
         font-size: 14px;
         font-weight: 500;
@@ -97,7 +102,7 @@ const PostComments = ({isLoading, commentData}) => {
     }
 
     return (
-      <>
+      <PostCommentContainer>
       <PostCommentWrapper className="post__container__bottom__comment">
         {!isLoading ? currentComments.map(el =>
           <div>
@@ -109,7 +114,7 @@ const PostComments = ({isLoading, commentData}) => {
         ) : null}
       </PostCommentWrapper>
       {!isLoading ? <Pagination totalComments={commentData.length} maxCommentsInPage={MAX_COMMENT_IN_PAGE} handleCurrentPage={handleCurrentPage}></Pagination> : null}
-      </>
+      </PostCommentContainer>
     );
 };
 
