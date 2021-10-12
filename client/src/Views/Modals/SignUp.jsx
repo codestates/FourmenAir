@@ -139,11 +139,11 @@ text-align: center;
     > div.box .radioBox {
       border: ${BORDER_DEV};
       position: relative;
-      height: 30px;
       
       > input {
         width: 15px;
         height: 15px;
+        margin-left: 30px;
       }
 
       > label {
@@ -151,13 +151,15 @@ text-align: center;
         color: #fff;
         letter-spacing: 1px;
         outline: none;
+        margin-left: 5px;
+        margin-right: 30px;
       }
     }
 
     > div.box .vaild-check-box {
       border: ${BORDER_DEV};
       position: relative;
-      height: 30px;
+      height: 20px;
 
       > .vaild-check-msg {
         position: absolute;
@@ -173,7 +175,7 @@ text-align: center;
 
     > div.box .submit-result-table {
       position: relative;
-      height: 30px;
+      height: 20px;
 
       > span {
         display: none;
@@ -436,7 +438,7 @@ const SignUpModal = () => {
             </div>
 
             <input type="submit" name="회원가입" value="OK" onClick={submitButtonHandler} />
-            <input type="button" id="btn" value="cancel" onClick={openModalHandler} />
+            <input type="button" id="btn" value="cancel" style={{marginLeft: "150px"}} onClick={openModalHandler} />
           </form>
           </div>
           </ModalView>
