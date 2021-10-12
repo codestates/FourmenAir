@@ -4,6 +4,7 @@ import axios from "axios"
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import {Link} from "react-router-dom"
 
 // banner 공통
 
@@ -113,9 +114,9 @@ const randomList = []
               <StyledSlider {...settings}>
                 {mainImage.map((el, i) => {
                   return (
-                    <>
+                    <Link to={`/post/${el.id}`}>
                       <img key={i} src={el.url} alt="차박" onClick={() => handleBannerPost(i)} />
-                    </>
+                    </Link>
                     )
                   
                 })}

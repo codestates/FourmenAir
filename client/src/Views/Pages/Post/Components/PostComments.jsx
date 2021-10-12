@@ -84,38 +84,38 @@ const PostCommentWrapper = styled.div`
     }
 `;
 
-const PostComments = ({isLoading, commentData}) => {
-    const MAX_COMMENT_IN_PAGE = 5;
+const PostComments = ({commentData}) => {
+  const MAX_COMMENT_IN_PAGE = 5;
 
-    /* state 선언부 */
-    const [currentPage, setCurrentPage] = useState(1);
+  /* state 선언부 */
+  const [currentPage, setCurrentPage] = useState(1);
 
-    /* index 설정 */
-    const indexOfLast = currentPage * MAX_COMMENT_IN_PAGE;
-    const indexOfFirst = indexOfLast - MAX_COMMENT_IN_PAGE;
-    const currentComments = commentData.slice(indexOfFirst, indexOfLast);
-    
-    /* 페이지 클릭 이벤트 핸들러 */
-    const handleCurrentPage = (num) => {
-      // console.log('handleCurrentPage num', num);
-      setCurrentPage(num);
-    }
+  /* index 설정 */
+  const indexOfLast = currentPage * MAX_COMMENT_IN_PAGE;
+  const indexOfFirst = indexOfLast - MAX_COMMENT_IN_PAGE;
+  const currentComments = commentData.slice(indexOfFirst, indexOfLast);
+  
+  /* 페이지 클릭 이벤트 핸들러 */
+  const handleCurrentPage = (num) => {
+    // console.log('handleCurrentPage num', num);
+    setCurrentPage(num);
+  }
 
-    return (
-      <PostCommentContainer>
-      <PostCommentWrapper className="post__container__bottom__comment">
-        {!isLoading ? currentComments.map(el =>
-          <div>
-              <img className="post__container__bottom__comment__profileimage" src="test" alt="프로필 사진 80px * 80px"></img>
-              <span className="post__container__bottom__comment__text">{el.body}</span>
-              <span className="post__container__bottom__comment__id">{el.name}</span>
-              <span className="post__container__bottom__comment__time">2021-10-07 16:32:01</span>
-          </div>
-        ) : null}
-      </PostCommentWrapper>
-      {!isLoading ? <Pagination totalComments={commentData.length} maxCommentsInPage={MAX_COMMENT_IN_PAGE} handleCurrentPage={handleCurrentPage}></Pagination> : null}
-      </PostCommentContainer>
-    );
+  return (
+    <PostCommentContainer>
+    <PostCommentWrapper className="post__container__bottom__comment">
+      {currentComments.map(el =>
+        <div>
+            <img className="post__container__bottom__comment__profileimage" src={el.writerImage} alt="프로필 사진 80px * 80px"></img>
+            <span className="post__container__bottom__comment__text">{el.content}</span>
+            <span className="post__container__bottom__comment__id">{el.writer}</span>
+            <span className="post__container__bottom__comment__time">{el.createdAt}</span>
+        </div>
+      )}
+    </PostCommentWrapper>
+    <Pagination totalComments={commentData.length} maxCommentsInPage={MAX_COMMENT_IN_PAGE} handleCurrentPage={handleCurrentPage}></Pagination>
+    </PostCommentContainer>
+  );
 };
 
 export default PostComments

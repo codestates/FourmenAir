@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 import styled from "styled-components"
+import { Link } from 'react-router-dom';
 
 // Random 공통
 const RandomeContainer = styled.div`
@@ -129,11 +130,13 @@ const [randomDummy, setRandomDummy] = useState([])
                         dummy.map((el, i) => {
                           if(el.id < 7){
                           return ( 
-                            <RandomBlogsUlLi key={i} onClick={() => handleRandomBlogPost(i)}>
-                              <h4>{el.title}</h4>
-                              <p>{el.postcontents}</p>
-                              <img src={el.url} alt="차박" />
-                            </RandomBlogsUlLi>
+                            <Link to={`/post/${el.id}`}>
+                              <RandomBlogsUlLi key={i} onClick={() => handleRandomBlogPost(i)}>
+                                <h4>{el.title}</h4>
+                                <p>{el.postcontents}</p>
+                                <img src={el.url} alt="차박" />
+                              </RandomBlogsUlLi>
+                            </Link>
                             )
                           }
                         })
@@ -141,11 +144,13 @@ const [randomDummy, setRandomDummy] = useState([])
                       :
                       (randomDummy.map((el, i) => {
                         return (
-                          <RandomBlogsUlLi key={i}>
-                              <h4>{el.title}</h4>
-                              <p>{el.postcontents}</p>
-                              <img src={el.url} alt="차박" />
-                          </RandomBlogsUlLi>
+                          <Link to={`/post/${el.id}`}>
+                            <RandomBlogsUlLi key={i}>
+                                <h4>{el.title}</h4>
+                                <p>{el.postcontents}</p>
+                                <img src={el.url} alt="차박" />
+                            </RandomBlogsUlLi>
+                          </Link>
                           )
                         })
                       )

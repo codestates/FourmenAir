@@ -39,19 +39,19 @@ const PaginationWrapper = styled.ul`
 `;
 
 const Pagination = ({totalComments, maxCommentsInPage, handleCurrentPage}) => {
-    const totalPages = [];
-    for (let i = 1; i <= Math.ceil(totalComments / maxCommentsInPage); i++) {
-        totalPages.push(i);
-    }
+  const totalPages = [];
+  for (let i = 1; i <= Math.ceil(totalComments / maxCommentsInPage); i++) {
+      totalPages.push(i);
+  }
 
-    // console.log('totalPages', totalPages);
-    return (
-      <PaginationContainer>
-        <PaginationWrapper>
-            {totalPages.map(num => <li><a onClick={() => handleCurrentPage(num)}>{num}</a></li>)}
-        </PaginationWrapper>
-        </PaginationContainer>
-    );
+  // console.log('totalPages', totalPages);
+  return (
+    <PaginationContainer>
+      <PaginationWrapper>
+          {totalPages.map(num => <li><a onClick={() => handleCurrentPage(num)}>{num}</a></li>)}
+      </PaginationWrapper>
+      </PaginationContainer>
+  );
 };
 
 export default Pagination

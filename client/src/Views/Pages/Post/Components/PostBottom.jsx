@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import PostComments from './PostComments';
 
 const BORDER_DEV = ``;
@@ -95,26 +94,9 @@ const PostBottomWrapper = styled.div`
   }
 `;
 
- const PostBottom = ({isLoggedIn, accessToken}) => {
+const PostBottom = ({commentData, isLoggedIn = true}) => {
   /* state 선언부 */
-  const [commentData, setCommentData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [commentValue, setCommentValue] = useState('');
-
-  /* data fetch */
-  const COMMENT_DATA_URL = `https://jsonplaceholder.typicode.com/comments`;
-  useEffect(() => {
-      setIsLoading(true);
-      axios.get(COMMENT_DATA_URL)
-      .then(res => {
-          console.log(`코멘트 데이터를 받아 오는데 성공했습니다.`);
-          setCommentData(res.data.slice(0, 30));
-          setIsLoading(false);
-      })
-      .catch(err => {
-          console.log(`코멘트 데이터를 받아 오는데 실패했습니다.`);
-      });
-  }, []);
 
   /* data submit */
   const handleCommentValue = (e) => {
@@ -124,23 +106,23 @@ const PostBottomWrapper = styled.div`
 
   const COMMENT_SUBMIT_URL = `https://jsonplaceholder.typicode.com/comments`;
   const handleSubmitComment = () => {
-    console.log('등록하기 버튼을 누르셨습니다.');
-    axios.post(COMMENT_SUBMIT_URL, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-      body: {
-        body: commentValue,
-        postid: '',
-        email: '',
-      },
-    }).then(res => {
-      console.log(`CODE: ${res.status} 댓글을 성공적으로 등록했습니다.`);
-    }).catch(err => {
-      console.log('댓글을 등록하는데 실패했습니다.');
-    });
+    // console.log('등록하기 버튼을 누르셨습니다.');
+    // axios.post(COMMENT_SUBMIT_URL, {
+    //   headers: {
+    //     Authorization: `Bearer ${accessToken}`,
+    //     "Content-Type": "application/json",
+    //   },
+    //   withCredentials: true,
+    //   body: {
+    //     body: commentValue,
+    //     postid: '',
+    //     email: '',
+    //   },
+    // }).then(res => {
+    //   console.log(`CODE: ${res.status} 댓글을 성공적으로 등록했습니다.`);
+    // }).catch(err => {
+    //   console.log('댓글을 등록하는데 실패했습니다.');
+    // });
   };
 
   return (
@@ -148,13 +130,13 @@ const PostBottomWrapper = styled.div`
     <PostBottomWrapper>
       <div className="post__container__bottom__title">
         <h2>현재 댓글</h2>
-        <span>{!isLoading ? `${commentData.length}` : `0`}</span>
+        <span>{commentData.length}</span>
       </div>
       <div className="post__container__bottom__inputbox">
         {!isLoggedIn ? <input type="text" placeholder="댓글을 달려면 로그인하세요." disabled></input> : <input type="text" onChange={handleCommentValue}></input>}
         {!isLoggedIn ? <button>로그인</button> : <button onClick={handleSubmitComment}>등록하기</button>}
       </div>
-      <PostComments isLoading={isLoading} commentData={commentData}></PostComments>
+      <PostComments commentData={commentData}></PostComments>
     </PostBottomWrapper>
     </PostBottomContainer>
   )

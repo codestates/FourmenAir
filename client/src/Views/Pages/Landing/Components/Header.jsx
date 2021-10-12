@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components'; 
 import MyPage from '../../../Modals/MyPage';
 import SignIn from '../../../Modals/SignIn';
 import SignUp from '../../../Modals/SignUp';
+import {Link} from "react-router-dom"
+import axios from 'axios';
+
+
+axios.defaults.baseURL = `http://ec2-13-124-229-42.ap-northeast-2.compute.amazonaws.com`;
+axios.defaults.withCredentials = true;
 
 // header 공통
 const HeaderContainer = styled.div`
@@ -79,33 +85,83 @@ const NavbarIcons = styled.div`
   }
 `;
 
-const Header = ({mainDummy, isLogin}) => {
+const Header = ({mainDummy}) => {
+  const [isLogin, setIsLogin] = useState(false);
+  const [loginInfo, setLoginInfo] = useState({
+    email: '',
+    password: '',
+  });
+  
+  const handleInputValue = (key) => (e) => {
+    setLoginInfo({ ...loginInfo, [key]: e.target.value });
+  };
+
+  const loginHandler = async (e) => {
+      e.preventDefault(); 
+
+    const URL = `/user/login`;
+    const PAYLOAD = {
+      email: loginInfo.email,
+      password: loginInfo.password,
+    }
+    const OPTION = {};
+
+    let response = null;
+    try {
+      response = await axios.post(URL, PAYLOAD, OPTION);
+      console.log('POST /user/login 요청에 성공했습니다.');
+    } catch(error) {
+      response = error.response;
+      alert("이메일과 비밀번호를 확인하세요.")
+      console.log('POST /user/login 요청에 실패했습니다.');
+    } finally {
+      if (response.status === 200) {
+        localStorage.setItem('accessToken', response.data.data.accessToken);
+        setIsLogin(true)
+      }
+    }
+  };
+
+  const haldleLogout = () => {
+      setIsLogin(false)
+  }
+
     return (
     <HeaderContainer>
         <Navbar>
             <NavbarLogo>
                 {mainDummy.map((el, i) => {
-                    return <img key={i} src={el.mainurl} />
+                    return( 
+                        <>
+                    <img key={i} src={el.mainurl} />
+                    </>
+                    )
                 })}
             </NavbarLogo>
             <NavbarLogo>
-                <a>FourmenAir</a>
+                <a><Link to="/" style={{color: 'black'}}>FourmenAir</Link></a>
             </NavbarLogo>
             <NavbarMenu>            
-                <li>Home</li>
-                <li>Local</li>
+                <li>
+                    <Link to="/" style={{color: 'black'}}>Home</Link>
+                </li>
+                <li>
+                    <Link to="/local" style={{color: 'black'}}>Local</Link>
+                </li>
             </NavbarMenu>
 
             <NavbarIcons>
                 {isLogin === false ? (
                     <>
-                    <SignIn />
+                    <SignIn loginHandler={loginHandler} handleInputValue={handleInputValue} />
                     <SignUp />
                     </>
                 ) : (
                     <>
                     <MyPage />
-                    <button>Log out</button>    
+                    <button onClick={haldleLogout}>
+                        <Link to="/" style={{color: 'white'}}>Log out</Link>
+                    </button>    
                     </>
                 )}
                 

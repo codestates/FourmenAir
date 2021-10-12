@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const BORDER_DEV = ``;
@@ -125,40 +124,20 @@ const PostTopWrapper = styled.div`
   }
 `;
 
- const PostTop = ({postData, dummy}) => {
-  /* 나중에 사용할 코드 */
-  // const [postData, setPostData] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [commentValue, setCommentValue] = useState('');
-
-  // /* data fetch */
-  // const POST_DATA_URL = `https://jsonplaceholder.typicode.com/post/1`;
-  // useEffect(() => {
-  //     setIsLoading(true);
-  //     axios.get(POST_DATA_URL)
-  //     .then(res => {
-  //         console.log(`포스트 데이터를 받아 오는데 성공했습니다.`);
-  //         setPostData(res.data);
-  //         setIsLoading(false);
-  //     })
-  //     .catch(err => {
-  //         console.log(`포스트 데이터를 받아 오는데 실패했습니다.`);
-  //     });
-  // }, []);
-
+const PostTop = ({postData}) => {
   return (
     <PostTopContainer>
     <PostTopWrapper postData={postData}>
       <div className="post__container__top__profile">
-        {/* <img className="post__container__top__profile__image" src={dummy[0].mainUrl} alt="프로필 사진 100px * 100px"></img> */}
-        <span className="post__container__top__profile__name"></span>
-        <span className="post__container__top__profile__time"></span>
-        <span className="post__container__top__profile__local"></span>
-        <span className="post__container__top__profile__title"></span>
+        <img className="post__container__top__profile__image" src={postData.postedUserData.image} alt="프로필 사진 100px * 100px"></img>
+        <span className="post__container__top__profile__name">{postData.postedUserData.name}</span>
+        <span className="post__container__top__profile__time">{postData.createdAt}</span>
+        <span className="post__container__top__profile__local">{postData.tags[0].localTag}</span>
+        <span className="post__container__top__profile__title">{postData.title}</span>
       </div>
       <div className="post__container__top__main">
-        {/* <img className="post__container__top__main__image" src={postData.url} alt="메인 이미지" ></img> */}
-        <div className="post__container__top__main__content"></div>
+        <img className="post__container__top__main__image" src={postData.url} alt="메인 이미지" ></img>
+        <div className="post__container__top__main__content">{postData.postcontents}</div>
       </div>
     </PostTopWrapper>
     </PostTopContainer>

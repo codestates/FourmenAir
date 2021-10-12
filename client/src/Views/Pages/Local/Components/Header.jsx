@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MyPage from '../../../Modals/MyPage';
 import SignIn from '../../../Modals/SignIn';
 import SignUp from '../../../Modals/SignUp';
+import { Link } from 'react-router-dom';
 
 // header 공통
 const HeaderContainer = styled.div`
@@ -89,11 +90,11 @@ const Header = ({mainDummy, isLogin}) => {
                 })}
             </NavbarLogo>
             <NavbarLogo>
-                <a>FourmenAir</a>
+                <a><Link to="/" style={{color: 'black'}}>FourmenAir</Link></a>
             </NavbarLogo>
-            <NavbarMenu>            
-                <li>Home</li>
-                <li>Local</li>
+            <NavbarMenu>
+                <li><Link to="/" style={{color: 'black'}}>Home</Link></li>
+                <li><Link to="/local" style={{color: 'black'}}>Local</Link></li>
             </NavbarMenu>
 
             <NavbarIcons>
