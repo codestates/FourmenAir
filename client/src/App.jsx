@@ -1,36 +1,34 @@
 import React, {useState, useEffect} from 'react';
+import Landing from './Views/Pages/Landing/Landing';
 import LocalPage from './Views/Pages/Local/LocalPage';
 import PostPage from "./Views/Pages/Post/PostPage"
 import DummyData from './Dummy/DummyData'
-import Signin from "./Views/Modals/Signin/SignIn"
-import Signup from "./Views/Modals/Signup/SignUp"
-import MyPage from './Views/Modals/Mypage/MyPage'
 import { Switch, Route } from 'react-router-dom';
 
 
 function App() {
 const [dummy, setDummy] = useState([])
+const [mainDummy, setMainDummy] = useState([])
 const [isLogin, setIsLogin] = useState(false);
 
 useEffect(() => {
   handleDummy()
-  setIsLogin(true)
+  // setIsLogin(true) 마이페이지 보고싶을 때!
 }, [])
 
 const handleDummy = () => {
   const filter = DummyData.filter((el) => el.url)
   setDummy(filter)
+
+  const filtered = DummyData.filter((el) => el.mainurl)
+  setMainDummy(filtered)
 }
 
   return (
     <React.Fragment>
-      <Switch>
-          <MyPage></MyPage>
-          <Signup></Signup>
-          <Signin></Signin>
-      </Switch>
-      <LocalPage dummy={dummy}></LocalPage>
-      <PostPage dummy={dummy}></PostPage>
+      <Landing mainDummy={mainDummy} isLogin={isLogin} ></Landing>
+      <LocalPage dummy={dummy} mainDummy={mainDummy} isLogin={isLogin} ></LocalPage>
+      <PostPage dummy={dummy} mainDummy={mainDummy} isLogin={isLogin} ></PostPage>
     </React.Fragment>
   );
 }

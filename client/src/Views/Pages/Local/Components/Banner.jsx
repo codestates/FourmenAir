@@ -17,10 +17,11 @@ const StyledSlider = styled(Slider)`
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
+  border-top: 1px solid #616161;
   .slick-slide div {
     background-color: #fff;
     box-sizing: border-box;
-    padding: 70px 20px;
+    padding: 30px 20px 70px;
     margin: 0 auto;
   }
   .slick-slide img { // 이미지 부분
@@ -78,13 +79,13 @@ const Banner = ({dummy}) => {
   };
 
 const randomList = []
-    for(let i = 0; i < 7; i++){
+    for(let i = 0; i < 4; i++){
       let random = Math.floor(Math.random() * dummy.length)
       randomList.push(dummy[random])
     }
     let reRandom = randomList.filter((el, i) => randomList.indexOf(el) === i)
-    while(reRandom.length === 7){
-      if(reRandom.length === 7){
+    while(reRandom.length === 4){
+      if(reRandom.length === 4){
         return setMainImage(reRandom)
       }else{
         let reList = Math.floor(Math.random() * dummy.length)
@@ -127,68 +128,3 @@ const randomList = []
 }
 
 export default Banner
-
-
-/*
-  .slick-dots { // 밑에 점 나오는거
-    .slick-active {
-      button::before {
-        color: #fff;
-      }
-    }
-    button::before {
-      color: #e9e9e9;
-    }
-  }
-.slick-prev {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  text-indent: -9999px;
-  
-}
-.slick-prev::before {
-  content: '<';
-  color: black;
-  text-indent: 0;
-  position: absolute;
-  top: 8px;
-  left: 20px;
-  font-size: 20px;
-  font-weight: bold;
-  border: 0;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  background-color: #e9e9e9;
-}
-.slick-next {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: 1000;
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  text-indent: -9999px;
-}
-.slick-next::before {
-  content: '>';
-  color: black;
-  text-indent: 0;
-  position: absolute;
-  top: 8px;
-  right: 20px;
-  font-size: 20px;
-  font-weight: bold;
-  border: 0;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  background-color: #e9e9e9;
-}
-*/
