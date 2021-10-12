@@ -14,13 +14,27 @@ module.exports = async (req, res) => {
 
     const userId = userData.id
 
-    const postedComment = await comment.create({
+    const commentPost = await comment.create({
       content: req.body.content,
       userId: userId,
       postId: req.body.postId
     })
 
+    const allComment = await comment.findAll({
+      include: [
+        { model: user, attributes: ["name", "email", "image"] }
+      ],
+      where: { postId: req.body.postId }
+    })
+
+    const postedComment = {
+      content: commentPost.content,
+      userId: userId,
+      postId: commentPost.postId
+    }
+
     // 작성한 comment만 전달할지, 작성된 것을 포함한 모든 comment를 전달할지
-    res.status(201).json({ data: { comment: postedComment } })
+    res.status(201).json({ data: { comment: allComment } })
   }
 };
+

@@ -18,15 +18,12 @@ module.exports = {
     return sign(userData, process.env.ACCESS_SECRET, {expiresIn: '24h'});
   },
   sendAccessToken: (req, res, userData, accessToken) => {
-    // console.log(accessToken);
     // res.cookie("accessToken", accessToken);
-    // console.log(req.cookies)
     res.status(200).json({ data: { userData: userData, accessToken: accessToken } });
   },
   isAuthorized: async (req, res) => {
     // const token = req.cookies.jwt;
     // const cookie = req.headers.cookie
-    // console.log(req.cookies)
     const header = req.headers.authorization;
     const accessToken = header.split(' ')[1];
 

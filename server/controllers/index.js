@@ -8,7 +8,6 @@ module.exports = {
 
   post: require('./post/post'),
   postId: require('./post/postId'),
-  newPost: require('./post/newPost'),
 
   comment: require('./comment/comment'),
   postComment: require('./comment/postComment')
