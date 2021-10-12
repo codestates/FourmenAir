@@ -173,6 +173,18 @@ export const ModalView = styled.div`
       }
     }  
 
+    > div.box .submit-result-table {
+      top: 0;
+      > span {
+        margin-bottom: 10px;
+        display: none;
+        left: 0;
+        color: #fff;
+        font-size: 16px;
+        transition: all 0.5s ease-out;
+      }
+    }
+
     > div.box .register {
       color: #03a9f4;
     }
@@ -231,7 +243,7 @@ export const ModalView = styled.div`
       cb(reader.result)
     };
     reader.onerror = function (error) {
-       console.log('Error: ', error);
+       // console.log('Error: ', error);
     };
   }
 
@@ -259,7 +271,7 @@ export const ModalView = styled.div`
       let base64Encoded = '';
       getBase64(img, (result) => {
         base64Encoded = result;
-        console.log(base64Encoded);
+        // console.log(base64Encoded);
         const newValue = {...modifiedUserInfo, image: base64Encoded};
         setModifiedUserInfo(newValue);
       });
@@ -295,8 +307,8 @@ export const ModalView = styled.div`
       password: modifiedUserInfo.password,
     };
   
-    console.log('제출 버튼을 누르셨습니다.');
-    console.log('다음의 정보가 전달됩니다.', PAYLOAD);
+    // console.log('제출 버튼을 누르셨습니다.');
+    // console.log('다음의 정보가 전달됩니다.', PAYLOAD);
 
     let response = null;
     try {
@@ -307,7 +319,7 @@ export const ModalView = styled.div`
           'Authorization': `Bearer ${TOKEN}`,
         },
       });
-      console.log('PATCH /user/edit 요청에 성공했습니다.');
+      // console.log('PATCH /user/edit 요청에 성공했습니다.');
       if (response.status === 201) {
         const token = response.data.data.accessToken;
         localStorage.setItem("accessToken", token);
@@ -319,10 +331,10 @@ export const ModalView = styled.div`
 
     } catch(error) {
       response = error.response;
-      console.log('PATCH /user/edit 요청에 실패했습니다.');
+      // console.log('PATCH /user/edit 요청에 실패했습니다.');
     } finally {
       setSubmitEnabled(true);
-      console.log(response);
+      // console.log(response);
     }
   }
 
@@ -331,37 +343,37 @@ export const ModalView = styled.div`
     if (delay) clearTimeout(delay);
     delay = setTimeout(() => {
       if (modifiedUserInfo.password === '' && modifiedUserInfo.passwordCheck === '') {
-        console.log('비밀번호 칸이 비어있습니다.');
+        // console.log('비밀번호 칸이 비어있습니다.');
         setIsPasswordEmpty(true);
       } else {
-        console.log('비밀번호 칸이 비어있지 않습니다.');
+        // console.log('비밀번호 칸이 비어있지 않습니다.');
         setIsPasswordEmpty(false);
       }
 
       if (modifiedUserInfo.password === modifiedUserInfo.passwordCheck) {
-        console.log('비밀번호가 일치합니다.');
+        // console.log('비밀번호가 일치합니다.');
         setIsPasswordMatched(true);
       } else {
-        console.log('비밀번호가 일치하지 않습니다.');
+        // console.log('비밀번호가 일치하지 않습니다.');
         setIsPasswordMatched(false);
       }
 
       if (vaildPasswordCheck(modifiedUserInfo.password)) {
-        console.log('형식에 맞는 비밀번호입니다.')
+        // console.log('형식에 맞는 비밀번호입니다.')
         setIsVaildPassword(true);
       } else {
         setIsVaildPassword(false);
       }
 
       if (vaildNameCheck(modifiedUserInfo.name)) {
-        console.log('형식에 맞는 이름입니다.')
+        // console.log('형식에 맞는 이름입니다.')
         setIsVaildName(true);
       } else {
         setIsVaildName(false);
       }
 
       if (vaildMobileCheck(modifiedUserInfo.mobile)) {
-        console.log('형식에 맞는 전화번호입니다.')
+        // console.log('형식에 맞는 전화번호입니다.')
         setIsVaildMobile(true);
       } else {
         setIsVaildMobile(false);
@@ -371,10 +383,10 @@ export const ModalView = styled.div`
 
   useEffect(() => {
     if (isPasswordMatched && isVaildPassword && isVaildName && isVaildMobile) {
-      console.log('!! 제출 버튼 활성화됨 !!');
+      // console.log('!! 제출 버튼 활성화됨 !!');
       setSubmitEnabled(true);
     } else {
-      console.log('!! 제출 버튼 비활성화됨 !!');
+      // console.log('!! 제출 버튼 비활성화됨 !!');
       setSubmitEnabled(false);
     }
   });
@@ -392,8 +404,8 @@ export const ModalView = styled.div`
           'Authorization': `Bearer ${TOKEN}`,
         },
       });
-      console.log('GET /user/info 요청에 성공했습니다.');
-      console.log(response);
+      // console.log('GET /user/info 요청에 성공했습니다.');
+      // console.log(response);
       if (response.status === 200) {
         const data = response.data.data.userData;
         const token = response.data.data.accessToken;
@@ -412,9 +424,9 @@ export const ModalView = styled.div`
       }
     } catch(error) {
       response = error.response;
-      console.log('GET /user/info 요청에 실패했습니다.');
+      // console.log('GET /user/info 요청에 실패했습니다.');
     } finally {
-      console.log(response);
+      // console.log(response);
     }
   }, [isOpen]);
 

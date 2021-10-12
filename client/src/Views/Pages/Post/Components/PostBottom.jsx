@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import PostComments from './PostComments';
 
 const BORDER_DEV = ``;
@@ -94,9 +95,11 @@ const PostBottomWrapper = styled.div`
   }
 `;
 
-const PostBottom = ({commentData, isLoggedIn = true}) => {
+const PostBottom = ({isLoggedIn, postId}) => {
   /* state 선언부 */
+  const [commentData, setCommentData] = useState([]);
   const [commentValue, setCommentValue] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   /* data submit */
   const handleCommentValue = (e) => {
@@ -104,25 +107,79 @@ const PostBottom = ({commentData, isLoggedIn = true}) => {
     setCommentValue(e.target.value);
   };
 
-  const COMMENT_SUBMIT_URL = `https://jsonplaceholder.typicode.com/comments`;
-  const handleSubmitComment = () => {
-    // console.log('등록하기 버튼을 누르셨습니다.');
-    // axios.post(COMMENT_SUBMIT_URL, {
-    //   headers: {
-    //     Authorization: `Bearer ${accessToken}`,
-    //     "Content-Type": "application/json",
-    //   },
-    //   withCredentials: true,
-    //   body: {
-    //     body: commentValue,
-    //     postid: '',
-    //     email: '',
-    //   },
-    // }).then(res => {
-    //   console.log(`CODE: ${res.status} 댓글을 성공적으로 등록했습니다.`);
-    // }).catch(err => {
-    //   console.log('댓글을 등록하는데 실패했습니다.');
-    // });
+  const handleSubmitComment = async () => {
+    if (commentValue === '') return;
+    setIsLoading(true);
+    const URL = `/comment/post`;
+    const TOKEN = localStorage.getItem('accessToken');
+    const PAYLOAD = {
+      "postId": postId,
+      "content": commentValue,
+    };
+  
+    let response = null;
+    try {
+      response = await axios(URL, {
+        method: 'POST',
+        data: PAYLOAD,
+        headers: {
+          'Authorization': `Bearer ${TOKEN}`,
+        },
+      });
+      console.log(`POST ${URL} 요청에 성공했습니다.`);
+      console.log(`Authorization: Bearer ${TOKEN}`);
+      console.log('PAYLOAD: ', PAYLOAD);
+    } catch(error) {
+      response = error.response;
+      console.log(`POST ${URL} 요청에 실패했습니다.`);
+    } finally {
+      await fetchCommentData();
+      setCommentValue('');
+      setIsLoading(false);
+      console.log(response);
+    }
+  };
+
+  /* data fetch */
+  useEffect(async () => {
+    await fetchCommentData();
+  }, []);
+
+  const fetchCommentData = async () => {
+    setIsLoading(true);
+    const POST_ID = postId;
+    const URL = `/comment?postid=${POST_ID}`;
+    const OPTION = {};
+    
+    let response = null;
+    try {
+      response = await axios.get(URL, OPTION);
+      if (response.status === 200) {
+        const parsed = await parseCommentData(response.data.data.comment);
+        setCommentData(parsed);
+        console.log(`GET ${URL} 요청에 성공했습니다.`);
+      }
+    } catch(error) {
+      response = error.response;
+      console.log(`GET ${URL} 요청에 실패했습니다.`);
+    } finally {
+      setIsLoading(false);
+      console.log(response);
+    }
+  };
+
+  const parseCommentData = async (data) => {
+    let result = [];
+    data.map(el => {
+      let template = {
+        content: el.content,
+        createdAt: el.createdAt,
+        writer: el.user.name,
+        writerImage: el.user.image,
+      };
+      result.push(template);
+    });
+    return result;
   };
 
   return (
@@ -132,11 +189,15 @@ const PostBottom = ({commentData, isLoggedIn = true}) => {
         <h2>현재 댓글</h2>
         <span>{commentData.length}</span>
       </div>
-      <div className="post__container__bottom__inputbox">
-        {!isLoggedIn ? <input type="text" placeholder="댓글을 달려면 로그인하세요." disabled></input> : <input type="text" onChange={handleCommentValue}></input>}
-        {!isLoggedIn ? <button>로그인</button> : <button onClick={handleSubmitComment}>등록하기</button>}
-      </div>
-      <PostComments commentData={commentData}></PostComments>
+      {!isLoading ?
+        <div className="post__container__bottom__inputbox">
+          {!isLoggedIn ? <input type="text" placeholder="댓글을 달려면 로그인하세요." disabled></input> : <input type="text" onChange={handleCommentValue}></input>}
+          {!isLoggedIn ? <button>로그인</button> : <button onClick={handleSubmitComment}>등록하기</button>}
+        </div>
+      : null}
+      {!isLoading ?
+        <PostComments commentData={commentData}></PostComments>
+      : null}
     </PostBottomWrapper>
     </PostBottomContainer>
   )

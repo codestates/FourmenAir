@@ -3,8 +3,7 @@ import styled from 'styled-components';
 const BORDER_DEV = ``;
 
 const PostTopContainer = styled.div`
-  width: 1280px;
-  margin: 0 auto;
+border-top: 1px solid #616161;
 `;
 
 const PostTopWrapper = styled.div`
@@ -13,6 +12,8 @@ const PostTopWrapper = styled.div`
   padding: 16px;
   min-height: 500px;
   height: auto;
+  width: 1280px;
+  margin: 0 auto;
   
   > .post__container__top__profile {
     /* 박스 설정 */
@@ -22,7 +23,7 @@ const PostTopWrapper = styled.div`
     width: 100%;
     height: 100px;
     /* 배경 설정 */
-    background-color: #edeef2;
+    background-color: #fafafa;
 
     > .post__container__top__profile__image {
       /* 박스 설정 */
@@ -39,8 +40,8 @@ const PostTopWrapper = styled.div`
       border: ${BORDER_DEV};
       display: inline-block;
       position: absolute;
-      top: 10px;
-      left: 120px;
+      top: 20px;
+      left: 130px;
       width: 160px;
       height: 20px;
       /* 폰트 설정 */
@@ -54,8 +55,8 @@ const PostTopWrapper = styled.div`
       border: ${BORDER_DEV};
       display: inline-block;
       position: absolute;
-      top: 40px;
-      left: 120px;
+      top: 64px;
+      left: 130px;
       width: 160px;
       height: 20px;
     }
@@ -64,8 +65,8 @@ const PostTopWrapper = styled.div`
       border: ${BORDER_DEV};
       display: inline-block;
       position: absolute;
-      top: 70px;
-      left: 120px;
+      top: 42px;
+      left: 130px;
       width: 160px;
       height: 20px;
       /* 폰트 설정 */
@@ -86,8 +87,17 @@ const PostTopWrapper = styled.div`
       /* 폰트 설정 */
       font-weight: 800;
       color: #333;
-      font-size: 36px;
+      font-size: 33px;
       line-height: 80px;
+    }
+    > .post__container__top__profile__title::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -55px;
+      width: 1px;
+      height: 80px;
+      background-color: #999;
     }
   }
 
@@ -117,9 +127,9 @@ const PostTopWrapper = styled.div`
       min-height: 500px;
       /* 폰트 설정 */
       color: rgba(0, 0, 0, 0.8);
-      font-size: 16px;
+      font-size: 25px;
       font-weight: 600;
-      line-height: 20px;
+      line-height: 40px;
     }
   }
 `;
