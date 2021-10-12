@@ -438,7 +438,7 @@ const SignUpModal = () => {
             </div>
 
             <input type="submit" name="회원가입" value="OK" onClick={submitButtonHandler} />
-            <input type="button" id="btn" value="cancel" style={{marginLeft: "150px"}} onClick={openModalHandler} />
+            <input type="button" id="btn" value="cancel" style={{marginLeft: "80px"}} onClick={openModalHandler} />
           </form>
           </div>
           </ModalView>
