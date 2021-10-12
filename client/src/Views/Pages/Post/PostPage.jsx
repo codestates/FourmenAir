@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { ReactComponent as LoadingIcon } from '../../../Assets/mypage-loading.svg';
-import DummyData from '../../../Dummy/DummyData'
-import Header from './Components/Header';
 import PostTop from './Components/PostTop';
 import PostBottom from './Components/PostBottom';
-import Footer from './Components/Footer';
 import axios from "axios"
 
 axios.defaults.baseURL = `http://ec2-13-124-229-42.ap-northeast-2.compute.amazonaws.com`;
@@ -16,16 +13,6 @@ const Post = ({match}) => {
   const [commentData, setCommentData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  /* 더미 데이터 코드 */
-  const [mainDummy, setMainDummy] = useState([])
-  const handleDummy = () => {
-    const filtered = DummyData.filter((el) => el.mainurl)
-    setMainDummy(filtered)
-  }
-  useEffect(() => {
-    handleDummy()
-  }, [])
 
   /* data fetch */
   useEffect(async () => {
@@ -84,7 +71,6 @@ const Post = ({match}) => {
 
   return (
   <React.Fragment>
-    <Header mainDummy={mainDummy} />
     {isLoading ? <LoadingIcon /> : null}
     {!isLoading ?
       <PostTop className="post__container__top" postData={postData}>
@@ -92,7 +78,6 @@ const Post = ({match}) => {
     : null}
     <PostBottom className="post__container__bottom" isLoggedIn={isLoggedIn} postId={postId}>
     </PostBottom>
-    <Footer />
   </React.Fragment>
   )
 };

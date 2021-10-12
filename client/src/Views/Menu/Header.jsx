@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components'; 
-import MyPage from '../../../Modals/MyPage';
-import SignIn from '../../../Modals/SignIn';
-import SignUp from '../../../Modals/SignUp';
+import MyPage from "../Modals/MyPage"
+import SignIn from '../Modals/SignIn';
+import SignUp from '../Modals/SignUp';
 import {Link} from "react-router-dom"
 import axios from 'axios';
 
@@ -122,8 +122,30 @@ const Header = ({mainDummy}) => {
     }
   };
 
+  const logoutHandler = async () => {
+    const URL = `/user/signout`;
+    const OPTION = {};
+  
+    let response = null;
+    try {
+      response = await axios.post(URL, OPTION);
+      console.log('POST /user/signout 요청에 성공했습니다.');
+    } catch(error) {
+      response = error.response;
+      console.log('POST /user/signout 요청에 실패했습니다.');
+    } finally {
+      console.log(response);
+      if (response.status === 200) {
+        localStorage.setItem('accessToken', '');
+        console.log('accessToken:', localStorage.getItem('accessToken'));
+      }
+    }
+  };
+  
+
   const haldleLogout = () => {
       setIsLogin(false)
+      logoutHandler()
   }
 
     return (
