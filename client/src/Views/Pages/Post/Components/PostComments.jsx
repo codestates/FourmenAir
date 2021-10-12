@@ -43,9 +43,9 @@ const PostCommentWrapper = styled.div`
         border: ${BORDER_DEV};
         display: inline-block;
         position: absolute;
-        top: 10px;
-        left: 120px;
-        width: 1130px;
+        top: 15px;
+        left: 230px;
+        width: 1020px;
         height: 40px;
         font-size: 14px;
         font-weight: 500;
@@ -55,9 +55,10 @@ const PostCommentWrapper = styled.div`
         /* 박스 설정 */
         border: ${BORDER_DEV};
         display: inline-block;
+        text-align: center;
         position: absolute;
-        bottom: 10px;
-        left: 120px;
+        top: 10px;
+        left: 110px;
         width: 100px;
         height: 30px;
         line-height: 30px;
@@ -74,7 +75,7 @@ const PostCommentWrapper = styled.div`
         position: absolute;
         bottom: 10px;
         left: 230px;
-        width: 150px;
+        width: 300px;
         height: 30px;
         font-size: 14px;
         font-weight: 500;
