@@ -1,8 +1,11 @@
 // comment 목록을 postId에 맞춰 찾아 배열로 반환
-const { comment } = require('../../models')
+const { comment, user } = require('../../models')
 
 module.exports = async (req, res) => {
   const commentByPostId = await comment.findAll({
+    include: [
+      { model: user, attributes: ["name", "email", "image"] }
+    ],
     where: { postId: req.query.postid }
   })
 

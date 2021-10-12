@@ -16,15 +16,6 @@ app.use(
   })
 );
 app.use(cookieParser());
-// app.use('/', (req, res, next) => {
-//   console.log("먹히네");
-//   res.cookie('test', 'please!!!!!!!!', {
-//     sameSite: "None",
-//     secure: true
-//   });
-//   console.log(req.cookies);
-//   next();
-// });
 app.get('/', (req, res) => {
   res.status(201).send('Hello World');
 });
@@ -37,7 +28,6 @@ app.patch("/user/edit", controllers.edit);
 
 app.get("/post", controllers.post);
 app.get("/post:id", controllers.postId);
-app.post("/post/new", controllers.newPost);
 
 app.get("/comment", controllers.comment);
 app.post("/comment/post", controllers.postComment);
