@@ -74,7 +74,7 @@ const LocalImgUlLi = styled.li`
   transition: all 0.6s 0.2s ease;
   transform: translateX(50px);
   &:first-child{
-    margin-left: -2%;
+    margin-left: 0;
   }
   &:hover{
     opacity: 1;

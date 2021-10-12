@@ -26,9 +26,10 @@ const Container = styled.div`
     margin: 5px;
     border: 1px solid #ddd;
     border-radius: 2px;
-	overflow: hidden;
+	}
+`;
 
-	> h4 {
+const SetBlogH4 = styled.h4`
 	font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
@@ -36,16 +37,15 @@ const Container = styled.div`
     white-space: nowrap;
 	margin-bottom: 5px;
 	margin-left: 3px;
-   }
+`;
 
-   > p {
+const SetBlogP = styled.p`
 	font-size: 13px;
     text-overflow: ellipsis;
     white-space: nowrap;
 	margin-bottom: 3px;
 	margin-left: 3px;
-   }
-}`;
+`;
 
 const Tag = styled.button`
 outline: none;
@@ -87,11 +87,11 @@ const MainPage = () => {
 			
 			<Container>
 					{filteredImages.map((el, i) => (
-						<Link to={`/post/${el.id}`}>
+						<Link to={`/post/${el.id}`} style={{overflow: "hidden"}}>
 							<div key={i} className="image-card">
 								<img className="image" style={{height: "230px"}}  src={el.url} alt="" />    
-								<h4>{el.title}</h4>
-								<p>{el.postcontents}</p>                        
+								<SetBlogH4>{el.title}</SetBlogH4>
+								<SetBlogP>{el.postcontents}</SetBlogP>                        
 							</div>
 						</Link>	
 					))}

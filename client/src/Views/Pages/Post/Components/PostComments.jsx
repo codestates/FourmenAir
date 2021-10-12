@@ -85,6 +85,7 @@ const PostCommentWrapper = styled.div`
 `;
 
 const PostComments = ({commentData}) => {
+  console.log('commentData commentData commentData', commentData);
   const MAX_COMMENT_IN_PAGE = 5;
 
   /* state 선언부 */
