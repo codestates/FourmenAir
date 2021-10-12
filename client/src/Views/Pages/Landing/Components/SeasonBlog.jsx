@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'; 
 import DummyData from '../../../../Dummy/DummyData';
+import {Link} from "react-router-dom"; 
 
 const SeasonBlogContainer = styled.div`
   position: relative;
@@ -44,11 +45,7 @@ const Container = styled.div`
 	margin-bottom: 3px;
 	margin-left: 3px;
    }
-
-}
-
-
-`;
+}`;
 
 const Tag = styled.button`
 outline: none;
@@ -71,47 +68,44 @@ const MainPage = () => {
 	const [season, setTag] = useState('spring');
 	const [filteredImages, setFilteredImages] = useState([]);
 	useEffect(() => {
-	  
-		  const filterBox = DummyData.filter((ele) => {
-			  if(ele.data) {
-				  return ele.data.season === season
-			  }
-		  })
-		  console.log(filterBox)
-		  setFilteredImages(filterBox);
-	  
-	  
+		const filterBox = DummyData.filter((ele) => {
+			if(ele.data) {
+				return ele.data.season === season
+			}
+		})
+		setFilteredImages(filterBox);
 	}, [season])
-  
-  
-	  return (
-		  <SeasonBlogContainer>
-			  <Tags>
-				  <TagButton name="spring" handleSetTag={setTag} /> 
-				  <TagButton name="summer" handleSetTag={setTag} /> 
-				  <TagButton name="fall" handleSetTag={setTag} /> 
-				  <TagButton name="winter" handleSetTag={setTag} />
-			  </Tags>
-			  
-			  <Container>
-					  {filteredImages.map((el, i) => (
-						  <div key={i} className="image-card">
-							  <img className="image" style={{height: "230px"}}  src={el.url} alt="" />    
-							  <h4>{el.title}</h4>
-							  <p>{el.postcontents}</p>                        
-						  </div>
-					  ))}
-			  </Container>                    
-		  </SeasonBlogContainer>
-	  );
-  }
-  
-  const TagButton = ({ name, handleSetTag }) => {
-	  return (
-		  <Tag onClick={() => handleSetTag(name)}>
-			  <p>{name.toUpperCase()}</p>
-		  </Tag>
-	  );
-  };
-  
-  export default MainPage;
+
+	return (
+		<SeasonBlogContainer>
+			<Tags>
+				<TagButton name="spring" handleSetTag={setTag} /> 
+				<TagButton name="summer" handleSetTag={setTag} /> 
+				<TagButton name="fall" handleSetTag={setTag} /> 
+				<TagButton name="winter" handleSetTag={setTag} />
+			</Tags>
+			
+			<Container>
+					{filteredImages.map((el, i) => (
+						<Link to={`/post/${el.id}`}>
+							<div key={i} className="image-card">
+								<img className="image" style={{height: "230px"}}  src={el.url} alt="" />    
+								<h4>{el.title}</h4>
+								<p>{el.postcontents}</p>                        
+							</div>
+						</Link>	
+					))}
+			</Container>                    
+		</SeasonBlogContainer>
+	);
+}
+
+const TagButton = ({ name, handleSetTag }) => {
+	return (
+		<Tag onClick={() => handleSetTag(name)}>
+			<p>{name.toUpperCase()}</p>
+		</Tag>
+	);
+};
+
+export default MainPage;

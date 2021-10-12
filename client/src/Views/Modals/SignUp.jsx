@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 export const ModalBackdrop = styled.div`
   position: fixed;
@@ -137,7 +139,46 @@ text-align: center;
 
 `;
 
- const SignUpModal = () => {
+const SignUpModal = () => {
+  
+  
+  const [userinfo, setuserinfo] = useState({
+    email: '',
+    name: '',
+    password: '',    
+    mobile: '',
+    gender:''
+  });
+  const [errorMessage, setErrorMessage] = useState('');
+  
+
+  const history = useHistory();
+  const handleInputValue = (key) => (e) => {
+    setuserinfo({ ...userinfo, [key]: e.target.value });
+  };
+
+  
+
+
+
+  const handleSignup = () => {   
+    
+    const {email, name, password, mobile, gender} = userinfo
+
+    if(email === '' || name === '' || password === '' || mobile === '' || gender === '') {
+      setErrorMessage('모든 항목은 필수입니다')
+    }
+    else {
+    axios.post('https://localhost:4000/signup', 
+    { email, name, password, mobile, gender }, 
+    { withCredentials: true }
+    )
+    .then((res) => {
+      history.push("/");
+    })
+    .catch((err) => console.log(err))  
+  }
+};
   const [isOpen, setIsOpen] = useState(false);
   const openModalHandler = () => {
     setIsOpen(!isOpen);
@@ -155,34 +196,46 @@ text-align: center;
           <form role="form" method="post">
       
           <div class="inputBox">
-            <input type="text" name="email" autocomplete="off" required />
+            <input type="email" name="email" autocomplete="off" required 
+            onChange={handleInputValue('email')}
+            />
             <label>email</label>
           </div>
             <div class="inputBox">
-              <input type="text" name="text" autocomplete="off" required />
+              <input type="text" name="text" autocomplete="off" required 
+              onChange={handleInputValue('name')}
+              />
               <label>Name</label>
             </div>
 
             <div class="inputBox">
-              <input type="password" name="password" autocomplete="off" required />
-              <label>Password</label>
+              <input type="password" name="password" autocomplete="off" required 
+              onChange={handleInputValue('password')}              
+              />
+              <label>Password</label>              
             </div>   
 
             <div class="inputBox">
-              <input type="tel" name="tel" autocomplete="off" required />
+              <input type="tel" name="tel" autocomplete="off" required 
+              onChange={handleInputValue('mobile')}
+              />
               <label>Phone Number</label>
             </div>  
             
             <div class="inputBox">
-              <input type="checkbox" id='scales' name="scales" autocomplete="off" required />
+              <input type="checkbox" id='scales' name="scales" autocomplete="off" required 
+              onChange={handleInputValue('gender')}
+              />
               <label for="scales">male</label>
             </div> 
             
             <div class="inputBox">
-              <input type="checkbox" id='scales' name="scales" autocomplete="off" required />
+              <input type="checkbox" id='scales' name="scales" autocomplete="off" required 
+              onChange={handleInputValue('gender')}
+              />
               <label for="scales">female</label>
             </div>
-            <input type="submit" name="회원가입" value="OK" />       
+            <input type="submit" name="회원가입" value="OK"  onClick={handleSignup}/>       
           </form>
           </div>
           </ModalView>
@@ -192,5 +245,3 @@ text-align: center;
   };
  
  export default SignUpModal;
-
-//<span onClick={openModalHandler} className='close-btn'>&times;</span>

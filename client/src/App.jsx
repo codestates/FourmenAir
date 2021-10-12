@@ -1,34 +1,19 @@
-import React, {useState, useEffect} from 'react';
-import Landing from './Views/Pages/Landing/Landing';
+import React from 'react';
+import LandingPage from './Views/Pages/Landing/LandingPage';
 import LocalPage from './Views/Pages/Local/LocalPage';
 import PostPage from "./Views/Pages/Post/PostPage"
-import DummyData from './Dummy/DummyData'
-import { Switch, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 
 function App() {
-const [dummy, setDummy] = useState([])
-const [mainDummy, setMainDummy] = useState([])
-const [isLogin, setIsLogin] = useState(false);
-
-useEffect(() => {
-  handleDummy()
-  // setIsLogin(true) 마이페이지 보고싶을 때!
-}, [])
-
-const handleDummy = () => {
-  const filter = DummyData.filter((el) => el.url)
-  setDummy(filter)
-
-  const filtered = DummyData.filter((el) => el.mainurl)
-  setMainDummy(filtered)
-}
 
   return (
     <React.Fragment>
-      <Landing mainDummy={mainDummy} isLogin={isLogin} ></Landing>
-      <LocalPage dummy={dummy} mainDummy={mainDummy} isLogin={isLogin} ></LocalPage>
-      <PostPage dummy={dummy} mainDummy={mainDummy} isLogin={isLogin} ></PostPage>
+      <Switch>
+        <Route exact path="/" component={LandingPage}></Route>
+        <Route exact path="/local" component={LocalPage}></Route>
+        <Route path="/post/:id" component={PostPage} />
+      </Switch>
     </React.Fragment>
   );
 }

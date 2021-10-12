@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import styled from 'styled-components'
+import {Link} from "react-router-dom"
 
 // localtitle 공통
 const LocalTitleContainer = styled.div`
@@ -159,11 +160,13 @@ const LocalTitle = ({dummy}) => {
                             setBlog.map((el, i) => {
                               return ( 
                               <>
+                              <Link to={`post/${el.id}`}>
                                 <LocalImgUlLi onClick={() => handleLocalTitlePost(i)}>
                                   <LocalImgUlLiImg key={i} src={el.url} alt="" />
                                   <LocalImgUlLiH4  key={i} >{el.title}</LocalImgUlLiH4>
                                   <LocalImgUlLiP  key={i} >{el.postcontents}</LocalImgUlLiP>
                                 </LocalImgUlLi>
+                              </Link>  
                             </>
                               )
                           })
@@ -173,11 +176,13 @@ const LocalTitle = ({dummy}) => {
                             selectBlog.map((el, i) => {
                               return ( 
                               <>
+                              <Link to={`post/${el.id}`}>
                                 <LocalImgUlLi>
                                   <LocalImgUlLiImg key={i} src={el.url} alt="" />
                                   <LocalImgUlLiH4  key={i} >{el.title}</LocalImgUlLiH4>
                                   <LocalImgUlLiP  key={i} >{el.postcontents}</LocalImgUlLiP>
                                 </LocalImgUlLi>
+                              </Link>
                               </>
                             )
                           })

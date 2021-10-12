@@ -125,7 +125,7 @@ const ModalView = styled.div`
     }
 `;
 
-const SignInModal = () => {
+const SignInModal = ({loginHandler, handleInputValue}) => {
   const [isOpen, setIsOpen] = useState(false);
   const openModalHandler = () => {
     setIsOpen(!isOpen);
@@ -143,16 +143,16 @@ const SignInModal = () => {
               <div className='box'>
               <span onClick={openModalHandler} className='close-btn'>&times;</span>
               <h1 align="center">Sign In</h1>
-              <form role="form" method="post">      
+              <form role="form" method="post" onSubmit={(e) => e.preventDefault()}>      
                 <div class="inputBox">
-                  <input type="text" name="user email" autocomplete="off" required />
+                  <input type="text" name="user email" autocomplete="off" required onChange={handleInputValue('email')}/>
                   <label>email</label>
                 </div>
                 <div class="inputBox">
-                  <input type="password" name="password" autocomplete="off" required />
+                  <input type="password" name="password" autocomplete="off" required onChange={handleInputValue('password')} />
                   <label>Password</label>
                 </div>      
-                <input type="submit" name="login" value="Login" />
+                <input type="submit" name="login" value="Login" onClick={loginHandler} />
                 <Link to="/signup"><input type="submit" name="회원가입" value="회원가입" /></Link>
               </form>      
               </div>
