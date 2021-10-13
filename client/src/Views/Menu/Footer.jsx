@@ -124,7 +124,7 @@ const Footer = () => {
                             <FooterInfoUl>
                                 <FooterInfoLi>공동대표</FooterInfoLi>
                                 <FooterInfoLi>김용희 <FooterInfoLiA href="https://github.com/yonghk423">GITHUB</FooterInfoLiA></FooterInfoLi>
-                                <FooterInfoLi>김범수 <FooterInfoLiA>GITHUB</FooterInfoLiA></FooterInfoLi>
+                                <FooterInfoLi>김범수 <FooterInfoLiA href="https://github.com/improvise0828">GITHUB</FooterInfoLiA></FooterInfoLi>
                                 <FooterInfoLi>손건영 <FooterInfoLiA  href="https://github.com/Geonyeong-Son">GITHUB</FooterInfoLiA></FooterInfoLi>
                                 <FooterInfoLi>이정훈 <FooterInfoLiA href="https://github.com/otter9459">GITHUB</FooterInfoLiA></FooterInfoLi>
                             </FooterInfoUl>

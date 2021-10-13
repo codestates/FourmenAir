@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { ReactComponent as LoadingIcon } from '../../Assets/mypage-loading.svg';
+import Upload from '../../Upload/upload';
 
 export const ModalBackdrop = styled.div`
   position: fixed;
@@ -231,21 +232,22 @@ export const ModalView = styled.div`
   const [isVaildPassword, setIsVaildPassword] = useState(true);
   const [isVaildMobile, setIsVaildMobile] = useState(true);
   const [isVaildName, setIsVaildName] = useState(true);
-  const [submitEnabled, setSubmitEnabled] = useState(false);
+  const [submitEnabled, setSubmitEnabled] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-
   const submitResultControl = useRef();
 
-  const getBase64 = (file, cb) => {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      cb(reader.result)
+  useEffect(() => {
+    const initialValue = {
+      email: "",
+      name: "",
+      mobile: "",
+      image: "",
+      gender: "",
+      password: "",
+      passwordCheck: "",
     };
-    reader.onerror = function (error) {
-       // console.log('Error: ', error);
-    };
-  }
+    setModifiedUserInfo(initialValue);
+  }, [isOpen]);
 
   const openModalHandler = () => {
     setIsOpen(!isOpen);
@@ -268,11 +270,9 @@ export const ModalView = styled.div`
     } else if (tag === 'image') {
       // 소스 코드 테스트
       let img = e.target.files[0];
-      let base64Encoded = '';
-      getBase64(img, (result) => {
-        base64Encoded = result;
-        // console.log(base64Encoded);
-        const newValue = {...modifiedUserInfo, image: base64Encoded};
+      Upload(img, (result) => {
+        const url = result.url;
+        const newValue = {...modifiedUserInfo, image: url};
         setModifiedUserInfo(newValue);
       });
     }
@@ -295,8 +295,15 @@ export const ModalView = styled.div`
 
   const submitButtonHandler = async (e) => {
     e.preventDefault();
+    console.log(isPasswordMatched, isVaildPassword, isVaildName, isVaildMobile)
     setSubmitEnabled(false);
+    if (isPasswordMatched && isVaildPassword && isVaildName && isVaildMobile) {
+      fetchUserInfo();
+    }
+    setSubmitEnabled(true);
+  }
 
+  const fetchUserInfo = async () => {
     const URL = `/user/edit`;
     const TOKEN = localStorage.getItem('accessToken');
     const PAYLOAD = {
@@ -306,9 +313,6 @@ export const ModalView = styled.div`
       mobile: modifiedUserInfo.mobile,
       password: modifiedUserInfo.password,
     };
-  
-    // console.log('제출 버튼을 누르셨습니다.');
-    // console.log('다음의 정보가 전달됩니다.', PAYLOAD);
 
     let response = null;
     try {
@@ -324,19 +328,20 @@ export const ModalView = styled.div`
         const token = response.data.data.accessToken;
         localStorage.setItem("accessToken", token);
         submitResultControl.current.style.display = "inline-block";
-        const delay = setTimeout(() => {
+        setTimeout(() => {
           submitResultControl.current.style.display = "none";
+          setTimeout(() => {
+            setIsOpen(false);
+          }, 200);
         }, 2000);
       }
-
     } catch(error) {
       response = error.response;
       // console.log('PATCH /user/edit 요청에 실패했습니다.');
     } finally {
-      setSubmitEnabled(true);
       // console.log(response);
     }
-  }
+  };
 
   useEffect(() => {
     let delay;
@@ -381,16 +386,6 @@ export const ModalView = styled.div`
     }, 1000);
   }, [modifiedUserInfo]);
 
-  useEffect(() => {
-    if (isPasswordMatched && isVaildPassword && isVaildName && isVaildMobile) {
-      // console.log('!! 제출 버튼 활성화됨 !!');
-      setSubmitEnabled(true);
-    } else {
-      // console.log('!! 제출 버튼 비활성화됨 !!');
-      setSubmitEnabled(false);
-    }
-  });
-
   useEffect(async () => {
     setIsLoading(true);
     const URL = `/user/info`;
@@ -432,77 +427,77 @@ export const ModalView = styled.div`
 
   return (
     <>
-        <ModalBtn onClick={openModalHandler}>
-          {isOpen === false ? 'My Page' : 'My Page'}
-        </ModalBtn>
-        {isOpen === true ? <ModalBackdrop>
-          <ModalView>
-          <div className='box'>
-          <span onClick={openModalHandler} className='close-btn'>&times;</span>
-          <h1 align="center">My Page</h1>
-          {!isLoading ?
-          <form role="form" onSubmit={submitButtonHandler}>
-            <div class="imageBox">
-              <label>profile image</label>
-              <img src={modifiedUserInfo.image} alt="이미지 100px*100px"></img>
-              <input type="file" onChange={(e) => inputUserInfoHandler(e, 'image')} accept="image/*"></input>
-            </div>
-
-            <div class="inputBox">
-              <input type="text" name="email" autocomplete="off" value={modifiedUserInfo.email} readonly required />
-              <label>email</label>
-            </div>
-            <div class="inputBox">
-              <input type="text" name="text" autocomplete="off"  defaultValue={modifiedUserInfo.name} onChange={(e) => inputUserInfoHandler(e, 'name')} required />
-              <label>Name</label>
-            </div>
-
-            <div class="vaildCheck">
-            {!isVaildName ? <span className="span1">닉네임은 2자 ~ 10자, 영문, 한글, 숫자, 띄어쓰기만 가능합니다.</span> : null}
-            </div>
-
-            <div class="inputBox">
-              <input type="password" name="password" onChange={(e) => inputUserInfoHandler(e, 'password')} autocomplete="off" required />
-              <label>Password</label>
-            </div> 
-            
-            <div class="inputBox">
-              <input type="password" name="passwordCheck" onChange={(e) => inputUserInfoHandler(e, 'passwordCheck')} autocomplete="off" required />
-              <label>Password Confirm</label>
-            </div> 
-
-            <div class="vaildCheck">
-              {!isPasswordEmpty && !isPasswordMatched ? <span className="span2">비밀번호가 일치하지 않습니다.</span> : null}
-              {!isVaildPassword && isPasswordMatched ? <span className="span3">비밀번호는 4자 이상 15자 이하로 영문, 한글, 숫자만 가능합니다.</span> : null}
-            </div>
-
-            <div class="inputBox">
-              <input type="tel" name="tel" autocomplete="off" defaultValue={modifiedUserInfo.mobile} onChange={(e) => inputUserInfoHandler(e, 'mobile')} required />
-              <label>Phone Number</label>
-            </div>  
-            
-            <div class="vaildCheck">
-              {!isVaildMobile ? <span className="span4">휴대폰 번호가 형식에 맞지 않습니다.</span> : null}
-            </div>
-
-            <div class="inputBox" style={{margin: "10px 0"}}>
-              <input type="checkbox" id='scales' style={{marginLeft: "-100px", marginBottom: "50px"}} name="scales" autocomplete="off" checked readonly required />
-              <label>{modifiedUserInfo.gender}</label>
-            </div> 
-            
-            <div class="submit-result-table">
-              <span ref={submitResultControl}>회원정보가 수정되었습니다.</span>
-            </div>
-
-            <input type="submit" name="login" value="OK" disabled={!submitEnabled} ></input>
-            <input type="button" id="btn" value="cancel" onClick={openModalHandler} />
-          </form>
-          : <LoadingIcon height="100%" width="100%" />}
+      <ModalBtn onClick={openModalHandler}>
+        {isOpen === false ? 'My Page' : 'My Page'}
+      </ModalBtn>
+      {isOpen === true ? <ModalBackdrop>
+        <ModalView>
+        <div className='box'>
+        <span onClick={openModalHandler} className='close-btn'>&times;</span>
+        <h1 align="center">My Page</h1>
+        {!isLoading ?
+        <form role="form" onSubmit={submitButtonHandler}>
+          <div class="imageBox">
+            <label>profile image</label>
+            <img src={modifiedUserInfo.image} alt="이미지 100px*100px"></img>
+            <input type="file" onChange={(e) => inputUserInfoHandler(e, 'image')} accept="image/*"></input>
           </div>
-          </ModalView>
-        </ModalBackdrop> : null}
+
+          <div class="inputBox">
+            <input type="text" name="email" autocomplete="off" value={modifiedUserInfo.email} readonly required />
+            <label>email</label>
+          </div>
+          <div class="inputBox">
+            <input type="text" name="text" autocomplete="off"  defaultValue={modifiedUserInfo.name} onChange={(e) => inputUserInfoHandler(e, 'name')} required />
+            <label>Name</label>
+          </div>
+
+          <div class="vaildCheck">
+          {!isVaildName ? <span className="span1">닉네임은 2자 ~ 10자, 영문, 한글, 숫자, 띄어쓰기만 가능합니다.</span> : null}
+          </div>
+
+          <div class="inputBox">
+            <input type="password" name="password" onChange={(e) => inputUserInfoHandler(e, 'password')} autocomplete="off" required />
+            <label>Password</label>
+          </div> 
+          
+          <div class="inputBox">
+            <input type="password" name="passwordCheck" onChange={(e) => inputUserInfoHandler(e, 'passwordCheck')} autocomplete="off" required />
+            <label>Password Confirm</label>
+          </div> 
+
+          <div class="vaildCheck">
+            {!isPasswordEmpty && !isPasswordMatched ? <span className="span2">비밀번호가 일치하지 않습니다.</span> : null}
+            {!isVaildPassword && isPasswordMatched ? <span className="span3">비밀번호는 4자 이상 15자 이하로 영문, 한글, 숫자만 가능합니다.</span> : null}
+          </div>
+
+          <div class="inputBox">
+            <input type="tel" name="tel" autocomplete="off" defaultValue={modifiedUserInfo.mobile} onChange={(e) => inputUserInfoHandler(e, 'mobile')} required />
+            <label>Phone Number</label>
+          </div>  
+          
+          <div class="vaildCheck">
+            {!isVaildMobile ? <span className="span4">휴대폰 번호가 형식에 맞지 않습니다.</span> : null}
+          </div>
+
+          <div class="inputBox" style={{margin: "10px 0"}}>
+            <input type="checkbox" id='scales' style={{marginLeft: "-100px", marginBottom: "50px"}} name="scales" autocomplete="off" checked readonly required />
+            <label>{modifiedUserInfo.gender}</label>
+          </div> 
+          
+          <div class="submit-result-table">
+            <span ref={submitResultControl}>회원정보가 수정되었습니다.</span>
+          </div>
+
+          <input type="submit" name="login" value="OK" disabled={!submitEnabled}></input>
+          <input type="button" id="btn" value="cancel" onClick={openModalHandler} />
+        </form>
+        : <LoadingIcon height="100%" width="100%" />}
+        </div>
+        </ModalView>
+      </ModalBackdrop> : null}
     </>
   );
-  };
+};
  
- export default MyPageModal;
+export default MyPageModal;
