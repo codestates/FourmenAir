@@ -28,7 +28,7 @@ const StyledSlider = styled(Slider)`
   .slick-slide img { // 이미지 부분
     box-sizing: border-box;
     display: inline-block;
-    height: 600px;
+    height: 400px;
     border: 0;
     border-radius: 30px;
     cursor: pointer;
