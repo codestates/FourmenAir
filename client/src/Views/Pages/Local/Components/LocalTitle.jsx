@@ -29,7 +29,7 @@ const LocalDivButton = styled.button`
   display: inline-block;
   margin-top: 5px;
   padding: 10px 45px;
-  margin-right: 2.5%;
+  margin-right: 1.5%;
   font-size: 15px;
   font-weight: bold;
   border: 1px solid #616161;
@@ -74,7 +74,7 @@ const LocalImgUlLi = styled.li`
   transition: all 0.6s 0.2s ease;
   transform: translateX(50px);
   &:first-child{
-    margin-left: -2%;
+    margin-left: 0;
   }
   &:hover{
     opacity: 1;

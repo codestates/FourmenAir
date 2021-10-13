@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import {Link} from "react-router-dom"
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Signup from './SignUp'
 
 const ModalBackdrop = styled.div`
   position: fixed;
@@ -111,7 +111,7 @@ const ModalView = styled.div`
       border-radius: 5px;
       font-size: 16px;
       margin-top: 15px;
-      margin-right: 20%;
+      margin-right: 5%;
       margin-bottom: 20px;
     }
 
@@ -123,6 +123,14 @@ const ModalView = styled.div`
       color: #fff;
       margin-left: 2%;
     }
+
+    .cjQnnS{
+      background-color: #03a9f4;
+      padding: 10px 20px;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 16px;
+    }
 `;
 
 const SignInModal = ({loginHandler, handleInputValue}) => {
@@ -130,6 +138,8 @@ const SignInModal = ({loginHandler, handleInputValue}) => {
   const openModalHandler = () => {
     setIsOpen(!isOpen);
   };
+
+
 
   return (
     <>
@@ -153,7 +163,8 @@ const SignInModal = ({loginHandler, handleInputValue}) => {
                   <label>Password</label>
                 </div>      
                 <input type="submit" name="login" value="Login" onClick={loginHandler} />
-                <Link to="/signup"><input type="submit" name="회원가입" value="회원가입" /></Link>
+                <Signup />
+                {/* <input type="submit" name="회원가입" value="회원가입" /> */}
               </form>      
               </div>
             </ModalView>
