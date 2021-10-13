@@ -124,7 +124,7 @@
 
 ## **Pagination**
 
-<img src = "https://i.ibb.co/VtpdSFR/post-reply-paging-001-1-width-600px.gif">
+<img src = "https://user-images.githubusercontent.com/85022657/137097244-054c8d88-a6c5-4a0a-96b6-1fff3301194a.gif">
 
 <br>
 <br>
