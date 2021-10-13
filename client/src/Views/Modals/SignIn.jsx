@@ -123,8 +123,10 @@ const ModalView = styled.div`
       color: #fff;
       margin-left: 2%;
     }
+`;
 
-    .cjQnnS{
+const Sign = styled.div`
+    > button{
       background-color: #03a9f4;
       padding: 10px 20px;
       color: #fff;
@@ -132,6 +134,7 @@ const ModalView = styled.div`
       font-size: 16px;
     }
 `;
+
 
 const SignInModal = ({loginHandler, handleInputValue}) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -161,9 +164,11 @@ const SignInModal = ({loginHandler, handleInputValue}) => {
                 <div class="inputBox">
                   <input type="password" name="password" autocomplete="off" required onChange={handleInputValue('password')} />
                   <label>Password</label>
-                </div>      
-                <input type="submit" name="login" value="Login" onClick={loginHandler} />
-                <Signup />
+                </div>  
+                <Sign>
+                  <input type="submit" name="login" value="Login" onClick={loginHandler} />
+                  <Signup />
+                </Sign>
               </form>      
               </div>
             </ModalView>

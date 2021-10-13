@@ -381,7 +381,7 @@ const SignUpModal = () => {
           <div className='box'>
           <span onClick={openModalHandler} className='close-btn'>&times;</span>
           <h1 align="center">Sign Up</h1>
-          <form role="form" method="post">
+          <form>
       
             <div class="inputBox">
               <input type="text" name="email" autocomplete="off" onChange={(e) => inputValueHandler(e, 'email')} required />
