@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import {Link} from "react-router-dom"
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Signup from './SignUp'
 
 const ModalBackdrop = styled.div`
   position: fixed;
@@ -131,6 +131,8 @@ const SignInModal = ({loginHandler, handleInputValue}) => {
     setIsOpen(!isOpen);
   };
 
+
+
   return (
     <>
         <ModalBtn onClick={openModalHandler}>
@@ -153,7 +155,8 @@ const SignInModal = ({loginHandler, handleInputValue}) => {
                   <label>Password</label>
                 </div>      
                 <input type="submit" name="login" value="Login" onClick={loginHandler} />
-                <Link to="/signup"><input type="submit" name="회원가입" value="회원가입" /></Link>
+                <Signup />
+                {/* <input type="submit" name="회원가입" value="회원가입" /> */}
               </form>      
               </div>
             </ModalView>

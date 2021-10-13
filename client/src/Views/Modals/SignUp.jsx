@@ -1,8 +1,6 @@
-import { useState } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { useRef } from 'react';
 
 const BORDER_DEV = ``;
 axios.defaults.baseURL = `http://ec2-13-124-229-42.ap-northeast-2.compute.amazonaws.com`;
