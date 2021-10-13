@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {Link} from "react-router-dom"
+import SignUp from "../Modals/SignUp"
 import styled from 'styled-components';
 
 const ModalBackdrop = styled.div`
@@ -96,6 +97,13 @@ const ModalView = styled.div`
       color: #03a9f4;
       font-size: 12px;
     }
+    
+    > div.box .signupBox{
+      position: relative;
+      background: #03a9f4;
+      height: 10;
+    }
+
     > div.box .register {
       color: #03a9f4;
     }
@@ -123,6 +131,30 @@ const ModalView = styled.div`
       color: #fff;
       margin-left: 2%;
     }
+`;
+
+const NavbarIcons = styled.div`
+  /* display: flex; */
+  list-style: none;
+  padding-left: 0;
+  > button {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      background: #03a9f4;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 15px;
+      margin-right: 20%;
+      margin-bottom: 20px;
+  }
+  >div {
+    background: black;
+    z-index: 10000;
+  }
 `;
 
 const SignInModal = ({loginHandler, handleInputValue}) => {
@@ -153,7 +185,11 @@ const SignInModal = ({loginHandler, handleInputValue}) => {
                   <label>Password</label>
                 </div>      
                 <input type="submit" name="login" value="Login" onClick={loginHandler} />
-                <Link to="/signup"><input type="submit" name="회원가입" value="회원가입" /></Link>
+                <NavbarIcons>
+                  <SignUp>
+                    <div onClick={openModalHandler}></div>
+                  </SignUp>
+                </NavbarIcons>
               </form>      
               </div>
             </ModalView>
