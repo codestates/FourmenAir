@@ -117,7 +117,7 @@
 
 ## **Add Comment**
 
-<img src = "https://i.ibb.co/QCMqk8x/post-reply-002-01-width-600px.gif" width="650px">
+<img src = "https://i.ibb.co/wWVhT4M/modal-mypage-001-1-width-600px.gif" width="650px">
 
 <br>
 <br>
