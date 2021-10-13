@@ -110,7 +110,7 @@
 
 ## **My Page**
 
-<img width="650px" alt="landingweb" src="https://i.ibb.co/wWVhT4M/modal-mypage-001-1-width-600px.gif" />
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/wWVhT4M/modal-mypage-001-1-width-600px.gif" alt="modal-mypage-001-1-width-600px" border="0" /></a>
 
 <br>
 <br>
