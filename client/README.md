@@ -2,9 +2,6 @@
 
 <img src=https://cdn.discordapp.com/attachments/894796696494682135/897069920536387614/001.png width=300 height=300 />
 
-<br>
-<br>
-
 ### **소중한 사람과 "즐거운 추억"을 함께 할 FourmenAir.**
 
 <br>
@@ -34,6 +31,8 @@
 
 # 🕵🏼 어떤 기술이 사용되었나요?
 
+<br>
+
 ## FRONT
 
 ![](https://img.shields.io/badge/FRONT-React-61DAFB?style=for-the-badge&logo=React)
@@ -43,8 +42,6 @@
 ![](https://img.shields.io/badge/FRONT-styled_components-DB7093?style=for-the-badge&logo=styled-components)
 
 ![](https://img.shields.io/badge/FRONT-axios-0B2343?style=for-the-badge&logo=axios)
-
-<br>
 
 ## BACK
 
@@ -57,8 +54,6 @@
 ![](https://img.shields.io/badge/BACK-Sequelize-258FFA?style=for-the-badge&logo=sequelize)
 
 ![](https://img.shields.io/badge/BACK-MySQL-4479A1?style=for-the-badge&logo=mysql)
-
-<br>
 
 ## DEPLOYMENT
 
@@ -74,25 +69,21 @@
 
 ## **Landing**
 
-<img width="650px" alt="landingmobile" src="https://cdn.discordapp.com/attachments/830706578578997268/897472217489760266/2021-10-12_22-09-48.png" />
-<img width="650px" alt="landingmobile" src="https://cdn.discordapp.com/attachments/830706578578997268/897472340189909032/2021-10-12_22-10-00.png" />
+<img width="650px" alt="landingmobile" src="https://i.ibb.co/30PrR5q/landing-003-01-width-600px.gif" />
 
 <br>
 <br>
 
 ## **Local**
 
-<img width="650px" alt="landingweb" src="https://cdn.discordapp.com/attachments/830706578578997268/897727843344191508/2021-10-13_15-09-43.png" />
-<img width="650px" alt="landingweb" src="https://cdn.discordapp.com/attachments/830706578578997268/897472351548104744/2021-10-12_22-10-23.png" />
-<img width="650px" alt="landingweb" src="https://cdn.discordapp.com/attachments/830706578578997268/897472354731577354/2021-10-12_22-10-33.png" />
+<img width="650px" alt="landingweb" src="https://i.ibb.co/5TvfZ8P/local-001-1-width-600px.gif" />
 
 <br>
 <br>
 
 ## **Post**
 
-<img width="650px" alt="landingweb" src="https://cdn.discordapp.com/attachments/830706578578997268/897472355020980254/2021-10-12_22-10-48.png" />
-<img width="650px"alt="landingweb" src="https://cdn.discordapp.com/attachments/830706578578997268/897472355599806474/2021-10-12_22-10-59.png" />
+<img width="650px" alt="landingweb" src="https://i.ibb.co/2gm95K1/post-main-001-1-width-600px.gif" />
 
 <br>
 <br>
@@ -105,29 +96,35 @@
 
 ## **Sign In**
 
-<img src = "https://cdn.discordapp.com/attachments/830706578578997268/897472358485463050/2021-10-12_22-11-20.png" width="650px">
+<img src = "https://i.ibb.co/f1n8wbg/login-001-1-width-600px.gif" width="650px">
 
 <br>
 <br>
 
 ## **Sign Up**
 
-<img src = "https://cdn.discordapp.com/attachments/830706578578997268/897472359009767434/2021-10-12_22-11-33.png" width="650px">
+<img src = "https://i.ibb.co/7QLG5Qd/signup-001-1-600px.gif" width="650px">
 
 <br>
 <br>
 
 ## **My Page**
 
-<img src = "https://cdn.discordapp.com/attachments/830706578578997268/897472360557465710/2021-10-12_22-11-58.png" width="650px">
+<img src = "https://i.ibb.co/wWVhT4M/modal-mypage-001-1-width-600px.gif">
 
 <br>
 <br>
 
 ## **Add Comment**
 
-<img src = "https://cdn.discordapp.com/attachments/830706578578997268/897472360557449226/2021-10-12_22-12-41.png" width="650px">
-<img src = "https://cdn.discordapp.com/attachments/830706578578997268/897473265017188432/2021-10-12_22-12-53.png" width="650px">
+<img src = "https://i.ibb.co/QCMqk8x/post-reply-002-01-width-600px.gif" width="650px">
+
+<br>
+<br>
+
+## **Pagination**
+
+<img src = "https://i.ibb.co/VtpdSFR/post-reply-paging-001-1-width-600px.gif">
 
 <br>
 <br>
