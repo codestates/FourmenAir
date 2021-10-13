@@ -69,14 +69,14 @@
 
 ## **Landing**
 
-<img src="https://i.ibb.co/30PrR5q/landing-003-01-width-600px.gif" alt="landing-003-01-width-600px" border="0" />
+<img src="https://user-images.githubusercontent.com/85022657/137096188-09bfc7e8-a886-4ae1-9bd5-fe7c6f022b98.gif" alt="landing-003-01-width-600px" border="0" />
 
 <br>
 <br>
 
 ## **Local**
 
-<img src="https://i.ibb.co/5TvfZ8P/local-001-1-width-600px.gif" alt="local-001-1-width-600px" border="0" />
+<img src="https://user-images.githubusercontent.com/85022657/137097843-48949e66-dcb5-491c-ae68-ae6894ea1e0f.gif" alt="local-001-1-width-600px" border="0" />
 
 <br>
 <br>
@@ -110,21 +110,21 @@
 
 ## **My Page**
 
-<img src="https://i.ibb.co/wWVhT4M/modal-mypage-001-1-width-600px.gif" alt="modal-mypage-001-1-width-600px" border="0" />
+<img src="https://user-images.githubusercontent.com/85022657/137096900-2c85ff8d-ff59-4d6f-b79d-7b2484f818fc.gif" alt="modal-mypage-001-1-width-600px" border="0" />
 
 <br>
 <br>
 
 ## **Add Comment**
 
-<img src = "https://i.ibb.co/QCMqk8x/post-reply-002-01-width-600px.gif" width="650px">
+<img src = "https://user-images.githubusercontent.com/85022657/137097165-bad32b7c-05c8-479c-a082-346ec31a321d.gif" width="650px">
 
 <br>
 <br>
 
 ## **Pagination**
 
-<img src = "https://i.ibb.co/VtpdSFR/post-reply-paging-001-1-width-600px.gif">
+<img src = "https://user-images.githubusercontent.com/85022657/137097244-054c8d88-a6c5-4a0a-96b6-1fff3301194a.gif">
 
 <br>
 <br>
