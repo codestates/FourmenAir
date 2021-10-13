@@ -123,8 +123,10 @@ const ModalView = styled.div`
       color: #fff;
       margin-left: 2%;
     }
+`;
 
-    .cjQnnS{
+const Sign = styled.div`
+    > button{
       background-color: #03a9f4;
       padding: 10px 20px;
       color: #fff;
@@ -132,6 +134,7 @@ const ModalView = styled.div`
       font-size: 16px;
     }
 `;
+
 
 const SignInModal = ({loginHandler, handleInputValue}) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -153,7 +156,7 @@ const SignInModal = ({loginHandler, handleInputValue}) => {
               <div className='box'>
               <span onClick={openModalHandler} className='close-btn'>&times;</span>
               <h1 align="center">Sign In</h1>
-              <form role="form" method="post" onSubmit={(e) => e.preventDefault()}>      
+              <form onSubmit={(e) => e.preventDefault()}>      
                 <div class="inputBox">
                   <input type="text" name="user email" autocomplete="off" required onChange={handleInputValue('email')}/>
                   <label>email</label>
@@ -161,10 +164,11 @@ const SignInModal = ({loginHandler, handleInputValue}) => {
                 <div class="inputBox">
                   <input type="password" name="password" autocomplete="off" required onChange={handleInputValue('password')} />
                   <label>Password</label>
-                </div>      
-                <input type="submit" name="login" value="Login" onClick={loginHandler} />
-                <Signup />
-                {/* <input type="submit" name="회원가입" value="회원가입" /> */}
+                </div>  
+                <Sign>
+                  <input type="submit" name="login" value="Login" onClick={loginHandler} />
+                  <Signup />
+                </Sign>
               </form>      
               </div>
             </ModalView>

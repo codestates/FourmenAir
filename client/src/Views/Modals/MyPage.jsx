@@ -204,9 +204,6 @@ export const ModalView = styled.div`
       margin-bottom: 20px;
     }
 
-    > div.box input:nth-child(13){
-      margin-right: 0;
-    }
     > div.box input:last-child{
       margin-right: 0;
     }
@@ -238,7 +235,6 @@ export const ModalView = styled.div`
   const [submitEnabled, setSubmitEnabled] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const submitResultControl = useRef();
-  const [isItOk, setIsItOk] = useState(true);
 
   useEffect(() => {
     const initialValue = {
@@ -347,60 +343,6 @@ export const ModalView = styled.div`
     }
   };
 
-  const submitResign = async () => {
-    let URL = `/user/info`;
-    const TOKEN = localStorage.getItem('accessToken');
-    let response = null;
-
-    if (modifiedUserInfo.password === '' && modifiedUserInfo.passwordCheck === '') {
-      // console.log('비밀번호 칸이 비어있습니다.');
-      setIsPasswordEmpty(true);
-    } else if(isItOk) {
-      try {
-        response = await axios(URL, {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${TOKEN}`,
-          },
-        })
-
-      if(response.status === 200) {
-        let URL = `/user/resign`;
-        response = await axios(URL, {
-          method: 'DELETE',
-          headers: {
-            'Authorization': `Bearer ${TOKEN}`,
-          },
-        });
-        // console.log('PATCH /user/edit 요청에 성공했습니다.  ');
-        if (response.status === 200) {
-          const token = response.data.data.accessToken;
-          console.log(token)
-          localStorage.setItem("accessToken", token);
-          setTimeout(() => {
-            submitResultControl.current.style.display =   "none";
-            setTimeout(() => {
-              setIsOpen(false);
-            }, 200);
-          }, 2000);
-        }
-        window.location.reload()
-      }
-      } catch(error) {
-        response = error.response;
-        // console.log('PATCH /user/edit 요청에 실패했습니다.  ');
-      } finally {
-        // console.log(response);
-      }
-      // console.log('비밀번호 칸이 비어있지 않습니다.');
-      setIsPasswordEmpty(false);
-    }
-  }
-
-  const isOkHandler = () => {
-    setIsItOk(!isItOk)
-  }
-
   useEffect(() => {
     let delay;
     if (delay) clearTimeout(delay);
@@ -444,7 +386,7 @@ export const ModalView = styled.div`
     }, 1000);
   }, [modifiedUserInfo]);
 
-  useEffect(async () => {
+  useEffect( async () => {
     setIsLoading(true);
     const URL = `/user/info`;
     const TOKEN = localStorage.getItem('accessToken');
@@ -494,7 +436,7 @@ export const ModalView = styled.div`
         <span onClick={openModalHandler} className='close-btn'>&times;</span>
         <h1 align="center">My Page</h1>
         {!isLoading ?
-        <form role="form" onSubmit={submitButtonHandler}>
+        <form onSubmit={submitButtonHandler}>
           <div class="imageBox">
             <label>profile image</label>
             <img src={modifiedUserInfo.image} alt="이미지 100px*100px"></img>
@@ -549,9 +491,6 @@ export const ModalView = styled.div`
 
           <input type="submit" name="login" value="OK" disabled={!submitEnabled}></input>
           <input type="button" id="btn" value="cancel" onClick={openModalHandler} />
-          <div>
-            <input type="submit" name="resign" value="resign" onClick={isOkHandler}></input>
-          </div>
         </form>
         : <LoadingIcon height="100%" width="100%" />}
         </div>
