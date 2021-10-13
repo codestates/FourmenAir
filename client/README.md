@@ -69,14 +69,14 @@
 
 ## **Landing**
 
-<img width="650px" alt="landingmobile" src="https://i.ibb.co/30PrR5q/landing-003-01-width-600px.gif" />
+<img width="650px" alt="landing" src="https://i.ibb.co/30PrR5q/landing-003-01-width-600px.gif" />
 
 <br>
 <br>
 
 ## **Local**
 
-<img width="650px" alt="landingweb" src="https://i.ibb.co/5TvfZ8P/local-001-1-width-600px.gif" />
+<img width="650px" alt="local" src="https://i.ibb.co/5TvfZ8P/local-001-1-width-600px.gif" />
 
 <br>
 <br>
