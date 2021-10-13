@@ -94,41 +94,6 @@
 
 <br>
 
-## **Sign In**
-
-<img src = "https://i.ibb.co/f1n8wbg/login-001-1-width-600px.gif" width="650px">
-
-<br>
-<br>
-
-## **Sign Up**
-
-<img src = "https://i.ibb.co/7QLG5Qd/signup-001-1-600px.gif" width="650px">
-
-<br>
-<br>
-
-## **My Page**
-
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/wWVhT4M/modal-mypage-001-1-width-600px.gif" alt="modal-mypage-001-1-width-600px" border="0" /></a>
-
-<br>
-<br>
-
-## **Add Comment**
-
-<img src = "https://i.ibb.co/wWVhT4M/modal-mypage-001-1-width-600px.gif" width="650px">
-
-<br>
-<br>
-
-## **Pagination**
-
-<img src = "https://i.ibb.co/VtpdSFR/post-reply-paging-001-1-width-600px.gif">
-
-<br>
-<br>
-
 # System Architecture
 
 [System Architecture](https://app.cloudcraft.co/view/9bc9b123-d77a-4bf7-80e5-bbb6566d033d?key=Dnv8ZybrsGWq_HID9L8RYg)
