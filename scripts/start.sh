@@ -8,4 +8,4 @@ export DATABASE_PASSWORD=$(aws ssm get-parameters --region ap-northeast-2 --name
 export ACCESS_SECRET=$(aws ssm get-parameters --region ap-northeast-2 --names ACCESS_SECRET --query Parameters[0].Value | sed 's/"//g')
 export REFRESH_SECRET=$(aws ssm get-parameters --region ap-northeast-2 --names REFRESH_SECRET --query Parameters[0].Value | sed 's/"//g')
 
-authbind --deep pm2 -f start index.js
+pm2 start index.js
