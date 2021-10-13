@@ -153,7 +153,7 @@ const SignInModal = ({loginHandler, handleInputValue}) => {
               <div className='box'>
               <span onClick={openModalHandler} className='close-btn'>&times;</span>
               <h1 align="center">Sign In</h1>
-              <form role="form" method="post" onSubmit={(e) => e.preventDefault()}>      
+              <form onSubmit={(e) => e.preventDefault()}>      
                 <div class="inputBox">
                   <input type="text" name="user email" autocomplete="off" required onChange={handleInputValue('email')}/>
                   <label>email</label>
@@ -164,7 +164,6 @@ const SignInModal = ({loginHandler, handleInputValue}) => {
                 </div>      
                 <input type="submit" name="login" value="Login" onClick={loginHandler} />
                 <Signup />
-                {/* <input type="submit" name="회원가입" value="회원가입" /> */}
               </form>      
               </div>
             </ModalView>

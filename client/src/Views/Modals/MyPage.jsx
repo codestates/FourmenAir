@@ -386,7 +386,7 @@ export const ModalView = styled.div`
     }, 1000);
   }, [modifiedUserInfo]);
 
-  useEffect(async () => {
+  useEffect( async () => {
     setIsLoading(true);
     const URL = `/user/info`;
     const TOKEN = localStorage.getItem('accessToken');
@@ -436,7 +436,7 @@ export const ModalView = styled.div`
         <span onClick={openModalHandler} className='close-btn'>&times;</span>
         <h1 align="center">My Page</h1>
         {!isLoading ?
-        <form role="form" onSubmit={submitButtonHandler}>
+        <form onSubmit={submitButtonHandler}>
           <div class="imageBox">
             <label>profile image</label>
             <img src={modifiedUserInfo.image} alt="이미지 100px*100px"></img>
