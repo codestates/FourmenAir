@@ -111,7 +111,7 @@ const ModalView = styled.div`
       border-radius: 5px;
       font-size: 16px;
       margin-top: 15px;
-      margin-right: 20%;
+      margin-right: 5%;
       margin-bottom: 20px;
     }
 
@@ -122,6 +122,14 @@ const ModalView = styled.div`
     > div.box a {   
       color: #fff;
       margin-left: 2%;
+    }
+
+    .cjQnnS{
+      background-color: #03a9f4;
+      padding: 10px 20px;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 16px;
     }
 `;
 
