@@ -253,6 +253,40 @@ export const ModalView = styled.div`
     setIsOpen(!isOpen);
   };
 
+  const resignHandler = async () => {
+    const URL = `/user/resign`;
+    const TOKEN = localStorage.getItem('accessToken');
+  
+    let response = null;
+    try {
+      response = await axios(URL, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${TOKEN}`,
+        },
+      });
+      console.log('DELETE /user/resign 요청에 성공했습니다.');
+    } catch(error) {
+      response = error.response;
+      console.log('DELETE /user/resign 요청에 실패했습니다.');
+    } finally {
+      // console.log(response);
+      // console.log('accessToken before: ', localStorage.getItem('accessToken'));
+      if (response.status === 200) {
+        localStorage.setItem('accessToken', '');
+        submitResultControl.current.style.display = "inline-block";
+        setTimeout(() => {
+          submitResultControl.current.style.display = "none";
+          setTimeout(() => {
+            setIsOpen(false);
+          }, 200);
+        }, 1500);
+        window.location.replace("/");
+        // console.log('accessToken after: ', localStorage.getItem('accessToken'));
+      }
+    }
+  }
+
   const inputUserInfoHandler = (e, tag) => {
     const inputValue = e.target.value;
     if (tag === 'name') {
@@ -490,7 +524,7 @@ export const ModalView = styled.div`
           </div>
 
           <input type="submit" name="login" value="OK" disabled={!submitEnabled}></input>
-          <input type="button" id="btn" value="cancel" onClick={openModalHandler} />
+          <input type="button" id="btn" value="resign" style={{textTransform: "uppercase"}} onClick={resignHandler} />
         </form>
         : <LoadingIcon height="100%" width="100%" />}
         </div>
