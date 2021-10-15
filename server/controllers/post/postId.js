@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
     ],
     where: { id: id }
   })
-  
+
   // post의 contents 데이터 조회
   const postPostContents = await post_post_contents.findOne({
     include: [

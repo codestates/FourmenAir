@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
       password: hashedPassword,
       mobile: mobile,
       gender: gender,
-      image: req.body.image || null,
+      image: req.body.image || "https://media.vlpt.us/images/otter/post/ec1e02e9-f350-44dd-a341-9f2192e11015/default_profile.png",
       salt: salt
     })
 
